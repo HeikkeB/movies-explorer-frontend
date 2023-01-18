@@ -1,0 +1,18 @@
+.about-project {
+    padding: 110px;
+}
+
+.about-project__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-project__content {
+    display: flex;
+}
+
+.about-project__line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
