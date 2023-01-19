@@ -6,6 +6,7 @@ export default function AboutProject() {
     <section className='about-project'>
     <div className='about-project__container'>
         <h1 className='about-project__title'>О проекте</h1>
+        <div className='about-project__blackline'></div>
         <div className='about-project__content'>
                 <div className='about-project__info'>
                     <h3 className='about-project__info-title'>Дипломный проект включал 5 этапов</h3>
@@ -19,13 +20,13 @@ export default function AboutProject() {
         <div className='about-project__line'>
         <div className='about-project__line-content'>
             <div className='about-project__line-backend'>
-                <p className='about-project__line-backend-title'>1 неделя</p>
+                <p className='about-project__line-title'>1 неделя</p>
             </div>
             <p className='about-project__line-backend-description'>Back-end</p>
         </div>
         <div className='about-project__line-content'>
             <div className='about-project__line-frontend'>
-                <p className='about-project__line-frontend-title'>4 неделя</p>
+                <p className='about-project__line-title'>4 неделя</p>
             </div>
             <p className='about-project__line-frontend-description'>Front-end</p>
         </div>
