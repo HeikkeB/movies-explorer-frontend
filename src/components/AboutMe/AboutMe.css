@@ -1,0 +1,146 @@
+.about-me {
+    padding: 110px 70px 125px;
+    box-sizing: border-box;
+    background: #202020;
+}
+
+.about-me__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-me__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    align-self: flex-start;
+    margin-bottom: 23px;
+}
+
+.about-me__blackline {
+    width: 100%;
+    border-bottom: 1px #DADADA solid;
+}
+
+.about-me__content {
+    display: flex;
+    margin: 65px 0 100px;
+    justify-content: space-between;
+}
+.about-me__content-text {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.about-me__content-name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.about-me__content-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.1;
+    color: #FFFFFF;   
+    mix-blend-mode: normal;
+    margin: 18px 0 26px;
+}
+
+.about-me__content-description {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    max-width: 600px;
+    margin: 0 0 100px;
+}
+
+.about-me__content-link {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.about-me__photo {
+    max-width: 270px;
+    max-height: 327px;
+    border-radius: 10px;
+}
+
+.about-me__portfolio {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.about-me__portfolio-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.1;
+    color: #8B8B8B;   
+    mix-blend-mode: normal;
+    margin: 0;
+}
+
+.about-me__portfolio-list {
+    list-style: none;
+    margin: 30px 0 0;
+    padding: 0;
+}
+
+.about-me__portfolio-item {
+    border-bottom: 1px #424242 solid;
+    display: flex;
+}
+
+.about-me__portfolio-item:last-of-type {
+    border: 0;
+}
+
+.about-me__portfolio-link {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 90px;
+    letter-spacing: -0.04em; 
+    color: #FFFFFF;
+    text-decoration: none;
+    position: relative;
+    width: 100%;
+}
+
+.about-me__portfolio-link::after {
+    background-image: url(../../images/arrow-link.svg);
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 17px;
+    right: 0;
+    top: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
