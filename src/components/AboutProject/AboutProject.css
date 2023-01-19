@@ -1,6 +1,7 @@
 .about-project {
     box-sizing: border-box;
     padding: 110px 70px;
+    background: #202020;
 }
 
 .about-project__container {
@@ -28,14 +29,14 @@
     font-size: 22px;
     line-height: 1.2;
     letter-spacing: -0.04em;
-    color: #000000;
+    color: #FFFFFF;
     align-self: flex-start;
     margin-bottom: 23px;
 }
 
 .about-project__blackline {
     width: 100%;
-    border-bottom: 1px #000000 solid;
+    border-bottom: 1px #DADADA solid;
 }
 
 .about-project__info-title {
@@ -45,7 +46,7 @@
     font-size: 20px;
     line-height: 24px;
     letter-spacing: -0.04em;
-    color: #000000;
+    color: #FFFFFF;
 }
 
 .about-project__info-description {
@@ -54,7 +55,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.4;
-    color: #000000;
+    color: #FFFFFF;
 }
 
 .about-project__line {
@@ -70,10 +71,10 @@
 
 .about-project__line-frontend {
     height: 36px;
-    background: #F2F2F2;
+    background: #303030;
 }
 
-.about-project__line-title {
+.about-project__line-title_black {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -83,3 +84,26 @@
     color: #000000;
     margin: 0;
 }
+
+.about-project__line-title_white {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.about-project__line-description {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+    color: #8B8B8B;
+}
+
+

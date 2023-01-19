@@ -20,15 +20,15 @@ export default function AboutProject() {
         <div className='about-project__line'>
         <div className='about-project__line-content'>
             <div className='about-project__line-backend'>
-                <p className='about-project__line-title'>1 неделя</p>
+                <p className='about-project__line-title_black'>1 неделя</p>
             </div>
-            <p className='about-project__line-backend-description'>Back-end</p>
+            <p className='about-project__line-description'>Back-end</p>
         </div>
         <div className='about-project__line-content'>
             <div className='about-project__line-frontend'>
-                <p className='about-project__line-title'>4 неделя</p>
+                <p className='about-project__line-title_white'>4 неделя</p>
             </div>
-            <p className='about-project__line-frontend-description'>Front-end</p>
+            <p className='about-project__line-description'>Front-end</p>
         </div>
         </div>
     </div>
