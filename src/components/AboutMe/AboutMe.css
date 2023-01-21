@@ -18,7 +18,7 @@
     letter-spacing: -0.04em;
     color: #FFFFFF;
     align-self: flex-start;
-    margin-bottom: 23px;
+    margin: 0 0 23px;
 }
 
 .about-me__blackline {
@@ -125,5 +125,29 @@
 }
 
 @media screen and (max-width: 451px) {
-    
+  .about-me {
+    padding: 70px 14px;
+  } 
+  .about-me__title {
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
+  .about-me__content {
+    margin-top: 60px;
+    gap: 40px;
+  }
+  .about-me__photo {
+    max-width: 292px;
+    max-height: 352px;
+  }
+  .about-me__content-name {
+    font-size: 30px;
+  }
+  .about-me__content-title {
+    margin: 20px 0;
+    font-size: 11px;
+  }
+  .about-me__content-description {
+    font-size: 11px;
+  }
 }

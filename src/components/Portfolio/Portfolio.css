@@ -55,7 +55,7 @@
     width: 18px;
     height: 17px;
     right: 0;
-    top: 50%;
+    top: 35%;
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -68,4 +68,32 @@
         font-size: 28px;
         line-height: 88px;
     }
+}
+
+@media screen and (max-width: 569px) {
+    .portfolio__link {
+        font-size: 21px;
+        line-height: 80px;
+    }
+}
+
+@media screen and (max-width: 451px) {
+    .portfolio {
+        padding: 0 14px 50px;
+    }
+    .portfolio__title {
+        font-size: 14px;
+    }
+    .portfolio__list {
+        margin-top: 20px;
+    }
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 68px;
+    }
+    .portfolio__link::after {
+        width: 12px;
+        height: 11px;
+    }
+
 }
