@@ -53,3 +53,28 @@
     padding: 10px 20px;
 }
 
+@media screen and (max-width: 989px) {
+    .promo {
+        padding: 140px 45px 75px;
+    }
+    .promo__container {
+       flex-direction: column-reverse;
+       align-items: center;
+       gap: 48px;
+
+       }
+    .promo_img {
+        max-width: 310px;
+        max-height: 304px;
+    }
+    .promo__content {
+        align-items: center;
+        text-align: center;
+    }
+    .promo__left-item-title {
+        font-size: 40px;
+    }
+    .promo__left-item-description {
+        margin: 22px 0 92px;
+    }
+}

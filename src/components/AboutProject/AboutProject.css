@@ -106,4 +106,14 @@
     color: #8B8B8B;
 }
 
-
+@media screen and (max-width: 769px) {
+    .about-project {
+        padding: 90px 50px;   
+    }
+    .about-project__info-description {
+        font-size: 12px;
+    }
+    .about-project__content {
+        margin: 70px 0 93px;
+    }
+}

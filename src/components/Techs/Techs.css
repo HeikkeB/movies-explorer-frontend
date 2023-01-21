@@ -86,3 +86,24 @@
     color: #FFFFFF;
     margin: 0;
 }
+
+@media screen and (max-width: 769px) {
+    .techs {
+        padding: 90px 50px;
+    }
+    .techs__content {
+        padding: 80px 0 83px;
+    }
+    .techs__content-description {
+        font-size: 12px;
+        margin: 23px 0 0;
+    }
+    .techs__info-item {
+        width: 84px;
+        height: 57px;
+    }
+    .techs__info-item-title {
+        font-size: 12px;
+        line-height: 57px;
+    }
+}

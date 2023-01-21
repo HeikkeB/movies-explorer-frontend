@@ -11,7 +11,7 @@ export default function Promo() {
                 <p className='promo__left-item-description'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
                 <a className='promo__left-item-link' href='https://goo.su/P65u' target='_black'>Узнать больше</a>
         </div>
-            <img src={logo} alt='Earth'></img>
+            <img className='promo_img' src={logo} alt='Earth'></img>
         </div>
     </section>
   )
