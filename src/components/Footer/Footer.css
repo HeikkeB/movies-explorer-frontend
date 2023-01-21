@@ -17,6 +17,7 @@
     line-height: 1.2;
     text-align: center;
     color: #8B8B8B;
+    margin: 0 0 20px;
 }
 
 .footer__line {
@@ -57,3 +58,8 @@
     text-decoration: none;
 }
 
+@media screen and (max-width: 769px) {
+    .footer {
+        padding: 80px 30px 20px;
+    }
+}

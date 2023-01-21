@@ -78,3 +78,22 @@
         margin: 22px 0 92px;
     }
 }
+
+@media screen and (max-width: 451px) {
+    .promo {
+        padding: 70px 10px 30px;
+    }
+    .promo__left-item-title {
+        font-size: 30px;
+    }
+    .promo__container {
+        gap: 44px;
+    }
+    .promo__left-item-description {
+        margin: 24px 20px 80px;
+    }
+    .promo_img {
+        max-width: 210px;
+        max-height: 206px;
+    }
+}

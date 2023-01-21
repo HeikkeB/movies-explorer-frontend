@@ -107,3 +107,30 @@
         line-height: 57px;
     }
 }
+
+@media screen and (max-width: 651px) {
+    .techs__content{
+        padding: 60px 0 50px;
+    }
+    .techs__info {
+        display: grid;
+        grid-template-columns: repeat(2, 84px);
+    }
+}
+
+@media screen and (max-width: 451px) {
+    .techs {
+        padding: 70px 18px;
+        background: #202020;
+    }
+    .techs__title {
+        font-size: 18px;
+        margin-bottom: 28px;
+    }
+    .techs__content-title {
+        font-size: 30px;
+    }
+    .techs__content-description {
+        font-size: 11px;
+    }
+}

@@ -1,5 +1,5 @@
 .portfolio {
-    padding: 0 70px 125px;
+    padding: 0 70px 105px;
     background: #202020;
 }
 
@@ -58,4 +58,14 @@
     top: 50%;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+@media screen and (max-width: 769px) {
+    .portfolio {
+        padding: 0 50px 70px;
+    }
+    .portfolio__link {
+        font-size: 28px;
+        line-height: 88px;
+    }
 }
