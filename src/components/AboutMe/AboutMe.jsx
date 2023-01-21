@@ -20,20 +20,6 @@ export default function AboutMe() {
             </div>
             <img className='about-me__photo' src={myPhoto} alt='my photography'></img>
         </div>
-        <div className='about-me__portfolio'>
-        <h2 className='about-me__portfolio-title'>Портфолио</h2>
-            <ul className='about-me__portfolio-list'>
-                <li className='about-me__portfolio-item'>
-                    <a className='about-me__portfolio-link' href='https://github.com/HeikkeB' target='_blank' rel="noreferrer">Статичный сайт</a>
-                </li>
-                <li className='about-me__portfolio-item'>
-                    <a className='about-me__portfolio-link' href='https://github.com/HeikkeB' target='_blank' rel="noreferrer">Адаптивный сайт</a>
-                </li>
-                <li className='about-me__portfolio-item'>
-                    <a className='about-me__portfolio-link' href='https://github.com/HeikkeB' target='_blank' rel="noreferrer">Одностраничное приложение</a>
-                </li>
-            </ul>
-        </div>
     </div>
    </section>
   )

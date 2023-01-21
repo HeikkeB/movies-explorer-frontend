@@ -1,0 +1,59 @@
+.footer {
+    padding: 80px 70px 20px;
+    box-sizing: border-box;
+    background: #202020;
+}
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__descrition {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: center;
+    color: #8B8B8B;
+}
+
+.footer__line {
+    width: 100%;
+    border-bottom: 1px #424242 solid;
+}
+
+.footer__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.footer__year {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.footer__links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer__link {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: right;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
