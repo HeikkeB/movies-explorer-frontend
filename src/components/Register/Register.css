@@ -126,3 +126,47 @@
     text-align: center;
     color: #4285F4;
 }
+
+@media screen and (max-width: 769px) {
+    .register {
+        align-items: center;
+    }
+    .register__container {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 461px) {
+    .register {
+        align-items: flex-start;
+    }
+    .register__container {
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .register__field:last-of-type {
+        margin-bottom: 222px;
+    }
+    .register__logo {
+        margin-top: 50px;
+    }
+    .register__title {
+        margin: 50px 0 80px;
+    }
+    .register__form {
+        width: 260px;
+    }
+    .register__button {
+        font-size: 12px;
+    }
+    .register__links {
+        margin-bottom: 30px;
+    }
+    .register__link-description {
+        font-size: 12px;
+    }
+    .register__link {
+        font-size: 12px;
+    }
+}

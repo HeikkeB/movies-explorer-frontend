@@ -8,10 +8,6 @@ export default function Register() {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const handleEmailValidation = email => 
-    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        email
-      );
     const {
         register,
         formState: {
@@ -93,11 +89,11 @@ export default function Register() {
                 <div className='register__input-error'>{errors?.password && <span className='register__input-error-text'>{errors?.password?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
                 <button className='register__button' type='submit'>Зарегистрироваться</button>
-            </form>
             <div className='register__links'>
             <p className='register__link-description'>Уже зарегистрированы?</p>
             <Link to='/signin' className='register__link'>Войти</Link>
             </div>
+            </form>
         </div>
     </div>
   )
