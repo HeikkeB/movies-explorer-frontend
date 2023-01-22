@@ -1,0 +1,48 @@
+.navtab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.navtab__pages {
+    display: flex;
+    gap: 20px;
+}
+
+.navtab__link {
+    text-decoration: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.3;
+    text-align: right;
+    color: #FFFFFF;
+}
+
+.navtab__link-account {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    border: 2px solid rgba(170, 170, 170, 0.2);
+    border-radius: 50px;
+    padding: 8px 12px 8px 31px;
+    text-decoration: none;
+    position: relative;
+}
+
+.navtab__link-account::before {
+    background-image: url(../../images/account-icon.svg);
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 14px;
+    top: 25%;
+    left: 10%;
+}

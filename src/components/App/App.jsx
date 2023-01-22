@@ -6,9 +6,10 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Register from '../Register/Register';
 import Login from '../Login/Login'
+import NotFound from '../NotFound/NotFound';
 
 function App() {
-const [loggedIn, setLoggedIn] = useState(false);
+const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <div className="App">
@@ -31,6 +32,7 @@ const [loggedIn, setLoggedIn] = useState(false);
             </>
              }
           />
+          <Route path='*' element={ <NotFound /> } />
     </Routes>
     </div>
   );

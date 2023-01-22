@@ -1,0 +1,14 @@
+.navigation {
+    padding: 18px 70px;
+    background: #202020;
+}
+
+.navigation__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation__logo-link {
+    height: 38px;
+}
