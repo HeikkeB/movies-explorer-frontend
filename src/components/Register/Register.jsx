@@ -8,20 +8,24 @@ export default function Register() {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const handleEmailValidation = email => 
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+      );
     const {
         register,
         formState: {
             errors, isValid,
         },
         handleSubmit,
-        reset,
     } = useForm({
         mode: 'onBlur',
     });
 
-    const handleSubmitReg = (evt) => {
-        evt.preventDefault();
-        reset();
+    const handleSubmitReg = () => {
+        setUsername('')
+        setEmail('')
+        setPassword('')
     }
 
   return (
@@ -57,50 +61,38 @@ export default function Register() {
                     }</div>
             </section>
             <section className='register__field'>
-                <span className='register__input-name'>Имя</span>
+                <span className='register__input-name'>E-mail</span>
                 <input 
                     className='register__input' 
                     placeholder='Email'
                     type='text'
-                    {...register('username', {
+                    {...register('email', {
                         required: 'Обязательное поле',
-                        minLength: {
-                            value: 2,
-                            message: 'минимум 2 символа'
-                        },
-                        maxLength: {
-                            value: 20,
-                            message: 'максимум 20 символов'
-                        },
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: 'Некорректный емайл'
+                        }
                     })}
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
-                <div className='register__input-error'>{errors?.username && <span className='register__input-error-text'>{errors?.username?.message || 'Что-то пошло не так...'}</span>}</div>
+                <div className='register__input-error'>{errors?.email && <span className='register__input-error-text'>{errors?.email?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
             <section className='register__field'>
-                <span className='register__input-name'>Имя</span>
+                <span className='register__input-name'>Пароль</span>
                 <input 
                     className='register__input' 
-                    placeholder='Имя'
-                    type='text'
-                    {...register('username', {
+                    placeholder='Пароль'
+                    type='password'
+                    {...register('password', {
                         required: 'Обязательное поле',
-                        minLength: {
-                            value: 2,
-                            message: 'минимум 2 символа'
-                        },
-                        maxLength: {
-                            value: 20,
-                            message: 'максимум 20 символов'
-                        },
                     })}
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className='register__input-error'>{errors?.username && <span className='register__input-error-text'>{errors?.username?.message || 'Что-то пошло не так...'}</span>}</div>
+                <div className='register__input-error'>{errors?.password && <span className='register__input-error-text'>{errors?.password?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
-                <button className='register__button'></button>
+                <button className='register__button' type='submit'>Зарегистрироваться</button>
             </form>
             <div className='register__links'>
             <p className='register__link-description'>Уже зарегистрированы?</p>
