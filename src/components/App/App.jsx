@@ -5,6 +5,7 @@ import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Register from '../Register/Register';
+import Login from '../Login/Login'
 
 function App() {
 const [loggedIn, setLoggedIn] = useState(false);
@@ -15,6 +16,10 @@ const [loggedIn, setLoggedIn] = useState(false);
         <Route
           path='/signup'
           element={ <Register /> }
+        />
+        <Route
+          path='/signin'
+          element={ <Login /> }
         />
         <Route
           path='/'
