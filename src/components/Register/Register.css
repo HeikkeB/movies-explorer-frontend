@@ -1,0 +1,85 @@
+.register {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #202020;
+    height: 100vh;
+}
+
+.register__container {
+    margin: 70px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.register__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin: 40px 0;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    width: 396px;
+}
+
+.register__field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 0 6px;
+}
+
+.register__field:last-of-type {
+    margin-bottom: 65px;
+}
+
+.register__input-name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    color: #8B8B8B;
+}
+
+.register__input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px #424242 solid;
+    background-color: transparent;
+    padding: 5px 0 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+.register__input-error {
+    height: 19px;
+}
+
+.register__input-error-text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+}
+
+.register__links {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
