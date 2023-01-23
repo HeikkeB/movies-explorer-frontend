@@ -74,6 +74,7 @@
     font-size: 13px;
     line-height: 1.4;
     color: #FFFFFF;
+    margin: 0;
 }
 
 .search-form__bottom-line {
@@ -128,5 +129,35 @@
   
   .search-form__slider.search-form__round:before {
     border-radius: 50%;
+  }
+
+  @media screen and (max-width: 820px){
+    .search-form {
+      padding: 60px 30px 10px;
+    }
+    .search-form__container {
+      flex-direction: column;
+    }
+    .search-form__bottom-line {
+      margin-top: 57px;
+    }
+  }
+
+  @media screen and (max-width: 430px){
+    .search-form {
+      padding: 60px 10px 10px;
+    }
+    .search-form__input {
+      font-size: 11px;
+    }
+    .search-form__input::placeholder {
+      font-size: 11px;
+    }
+    .search-form__shortfilm-title {
+      font-size: 11px;
+    }
+    .search-form__bottom-line {
+      margin-top: 44px;
+    }
   }
   

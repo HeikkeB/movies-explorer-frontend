@@ -65,6 +65,20 @@
     color: #FFFFFF;
 }
 
+.login__input_error {
+    width: 100%;
+    border: none;
+    border-bottom: 1px #424242 solid;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 5px 0 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #EE3465;
+}
+
 .login__input:active, :hover, :focus {
     outline: 0;
     outline-offset: 0;

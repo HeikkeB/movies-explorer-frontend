@@ -35,7 +35,7 @@ export default function Register() {
             <section className='register__field'>
                 <span className='register__input-name'>Имя</span>
                 <input 
-                    className='register__input' 
+                    className={errors?.username ? 'register__input_error' : 'register__input'}
                     placeholder='Имя'
                     type='text'
                     {...register('username', {
@@ -59,7 +59,7 @@ export default function Register() {
             <section className='register__field'>
                 <span className='register__input-name'>E-mail</span>
                 <input 
-                    className='register__input' 
+                    className={errors?.email ? 'register__input_error' : 'register__input'}
                     placeholder='Email'
                     type='text'
                     {...register('email', {
@@ -77,11 +77,19 @@ export default function Register() {
             <section className='register__field'>
                 <span className='register__input-name'>Пароль</span>
                 <input 
-                    className='register__input' 
+                    className={errors?.password ? 'register__input_error' : 'register__input'} 
                     placeholder='Пароль'
                     type='password'
                     {...register('password', {
                         required: 'Обязательное поле',
+                        minLength: {
+                            value: 4,
+                            message: 'минимум 4 символа'
+                        },
+                        maxLength: {
+                            value: 30,
+                            message: 'максимум 30 символов'
+                        },
                     })}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

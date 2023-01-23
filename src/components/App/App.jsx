@@ -38,7 +38,6 @@ const [loggedIn, setLoggedIn] = useState(true);
           <Route path='/movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <Header loggedIn={loggedIn} />
-              <SearchForm />
               <Movies />
               <Footer />
             </ProtectedRoute>

@@ -33,7 +33,7 @@ export default function Login() {
             <section className='login__field'>
                 <span className='login__input-name'>E-mail</span>
                 <input 
-                    className='login__input' 
+                    className={errors?.email ? 'login__input_error' : 'login__input'}
                     placeholder='Email'
                     type='text'
                     {...register('email', {
@@ -51,11 +51,15 @@ export default function Login() {
             <section className='login__field'>
                 <span className='login__input-name'>Пароль</span>
                 <input 
-                    className='login__input' 
+                    className={errors?.password ? 'login__input_error' : 'login__input'}
                     placeholder='Пароль'
                     type='password'
                     {...register('password', {
                         required: 'Обязательное поле',
+                        maxLength: {
+                            value: 30,
+                            message: 'максимум 30 символов'
+                        },
                     })}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
