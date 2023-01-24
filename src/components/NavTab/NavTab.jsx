@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './NavTab.css'
 import burgerMenu from '../../images/menu3line.svg'
 import burgerMenuCross from '../../images/menu_cross_32.svg'
@@ -10,9 +10,24 @@ export default function NavTab() {
     <nav className={ isBurgerOpen ? 'navtab_active' : 'navtab' }>
         <div className={ isBurgerOpen ? 'navtab__menu active' : 'navtab__menu' }>
           <div className='navtab__pages'>
-              <Link className='navtab__link-mobile' to='/'>Главная</Link>
-              <Link className='navtab__link' to='/movies'>Фильмы</Link>
-              <Link className='navtab__link' to='/saved-movies'>Сохранённые фильмы</Link>
+              <NavLink 
+                to='/'
+                  className={({ isActive }) => 
+                  isActive ? 'navtab__link-mobile_active' : 'navtab__link-mobile'}>
+                    Главная
+              </NavLink>
+              <NavLink 
+                to='/movies'
+                  className={({ isActive }) => 
+                  isActive ? 'navtab__link_active' : 'navtab__link'}>
+                    Фильмы
+              </NavLink>
+              <NavLink 
+                to='/saved-movies'
+                  className={({ isActive }) => 
+                  isActive ? 'navtab__link_active' : 'navtab__link'}>
+                    Сохранённые фильмы
+              </NavLink>
           </div>
           <Link className='navtab__link-account' to='/profile'>Аккаунт</Link>
         </div>

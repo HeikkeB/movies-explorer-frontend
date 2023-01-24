@@ -12,3 +12,15 @@
 .navigation__logo-link {
     height: 38px;
 }
+
+@media screen and (max-width: 768px) {
+    .navigation {
+        padding: 18px 30px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .navigation {
+        padding: 18px 14px;
+    }
+}

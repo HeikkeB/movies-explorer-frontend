@@ -101,7 +101,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    transition: .3s;
+    transition: .2s;
   }
   
   .search-form__slider:before {
@@ -111,7 +111,7 @@
     height: 10px;
     left: 2px;
     position: absolute;
-    transition: .3s;
+    transition: .2s;
     width: 10px;
   }
   

@@ -71,6 +71,21 @@
   display: none;
 }
 
+.navtab__link_active {
+  text-decoration: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: right;
+  color: #d3d3d3;
+}
+
+.navtab__link-mobile_active {
+  display: none;
+}
+
 @media screen and (max-width: 769px) {
   .navtab__burger {
     display: block;
@@ -89,7 +104,7 @@
     height: 100%;
     background: #202020;
     z-index: 10;
-    transition: right .4s;
+    transition: right .3s;
   }
 
   .active {
@@ -126,6 +141,31 @@
     color: #FFFFFF;
   }
 
+  .navtab__link-mobile_active {
+    display: block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-underline-offset: 7px;
+  }
+
+  .navtab__link_active {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-underline-offset: 7px;
+  }
+
   .navtab__link {
     text-decoration: none;
     font-family: 'Inter';
@@ -139,5 +179,29 @@
 
   .navtab__link-account {
     margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .navtab__menu {
+    width: 100%;
+  }
+
+  .navtab__pages {
+    margin-top: 144px;
+    gap: 24px;
+  }
+  
+  .navtab__link-account {
+    margin-bottom: 46px;
+  }
+
+  .navtab__burgerMenuCross {
+    top: 15px;
+    right: 13px;
+  }
+  .navtab__burgerMenu {
+    top: 20px;
+    right: 15px;
   }
 }
