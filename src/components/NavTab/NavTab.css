@@ -1,9 +1,10 @@
-.navtab {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
+
+.navtab__menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+ }
 
 .navtab__pages {
     display: flex;
@@ -47,52 +48,96 @@
     left: 10%;
 }
 
-.burger {
-    height: 20px;
-    position: relative;
-    width: 30px;
-    border: none;
-    background: rgba(0, 0, 0, 0);
+.navtab__burger {
+  display: none;
+}
+
+.navtab__burgerMenuCross {
+  margin: 0;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 10;
+}
+
+.navtab__burgerMenu {
+  position: absolute;
+  top: 22px;
+  right: 30px;
+  z-index: 10;
+}
+
+.navtab__link-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 769px) {
+  .navtab__burger {
+    display: block;
+    cursor: pointer;
+    z-index: 10;
   }
-  
-  .burger-line {
+  .navtab__menu {
     display: flex;
-    width: 30px;
-    height: 3px;
-    background: #4d4244;
-    transition: 0.3s all ease;
-  }
-  
-  .top-line {
-    position: absolute;
-    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    right: -100%;
     top: 0;
-  }
-  
-  .middle-line {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translate(0, -50%);
-  }
-  
-  .bottom-line {
-    position: absolute;
-    left: 0;
     bottom: 0;
+    width: 68%;
+    height: 100%;
+    background: #202020;
+    z-index: 10;
+    transition: right .4s;
   }
-  
-  .burger.active > .top-line {
-    transform: translateY(7px) rotate(45deg);
-    transition: 0.3s all ease;
+
+  .active {
+    right: 0;
   }
-  
-  .burger.active > .middle-line {
-    opacity: 0;
-    transition: 0.3s all ease;
+
+  .navtab_active {
+    display: flex;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    top: 0;
+    z-index: 5;
+    background: rgba(0, 0, 0, .3);
   }
-  
-  .burger.active > .bottom-line {
-    transform: translateY(-10px) rotate(-45deg);
-    transition: 0.3s all ease;
+
+  .navtab__pages {
+    flex: 1;
+    flex-direction: column;
+    margin-top: 160px;
+    gap: 28px;
   }
+
+  .navtab__link-mobile {
+    display: block;
+    text-decoration: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  .navtab__link {
+    text-decoration: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  .navtab__link-account {
+    margin-bottom: 90px;
+  }
+}

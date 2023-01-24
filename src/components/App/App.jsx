@@ -9,7 +9,6 @@ import Login from '../Login/Login'
 import NotFound from '../NotFound/NotFound';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Movies from '../Movies/Movies';
-import SearchForm from '../SearchForm/SearchForm';
 
 function App() {
 const [loggedIn, setLoggedIn] = useState(true);
@@ -29,7 +28,8 @@ const [loggedIn, setLoggedIn] = useState(true);
           path='/'
           element={
             <>
-              <Header loggedIn={loggedIn} />
+             <Header loggedIn={loggedIn}
+            />
               <Main /> 
               <Footer />
             </>
@@ -37,7 +37,8 @@ const [loggedIn, setLoggedIn] = useState(true);
           />
           <Route path='/movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Header loggedIn={loggedIn} />
+            <Header loggedIn={loggedIn}
+            />
               <Movies />
               <Footer />
             </ProtectedRoute>
