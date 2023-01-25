@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import './Login.css'
 import headerLogo from '../../images/header_logo.svg'
 
-export default function Login() {
+export default function Login({ loggedIn, setLoggedIn }) {
+    const history = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {
@@ -20,6 +21,8 @@ export default function Login() {
     const handleSubmitReg = () => {
         setEmail('')
         setPassword('')
+        setLoggedIn(!loggedIn)
+        history('/')
     }
 
   return (

@@ -22,3 +22,19 @@
     justify-items: center;
     align-items: center;
 }
+
+.movies__yet-btn {
+    padding: 11px 0 9px;
+    margin: 60px 0 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #FFFFFF;
+    background: #2F2F2F;
+    border-radius: 6px;
+}

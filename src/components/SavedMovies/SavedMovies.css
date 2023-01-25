@@ -1,0 +1,7 @@
+.saved-movies {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #202020;
+    padding-bottom: 186px;
+}

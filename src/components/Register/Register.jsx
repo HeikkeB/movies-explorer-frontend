@@ -1,13 +1,14 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import './Register.css'
 import headerLogo from '../../images/header_logo.svg'
 
-export default function Register() {
+export default function Register({ loggedIn, setLoggedIn }) {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const history = useNavigate();
     const {
         register,
         formState: {
@@ -22,6 +23,8 @@ export default function Register() {
         setUsername('')
         setEmail('')
         setPassword('')
+        setLoggedIn(!loggedIn)
+        history('/')
     }
 
   return (
