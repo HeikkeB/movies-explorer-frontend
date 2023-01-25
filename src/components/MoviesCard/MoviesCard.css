@@ -17,6 +17,7 @@
     object-fit: cover;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    cursor: pointer;
 }
 
 .movies-card__info {
@@ -79,4 +80,22 @@
     background-color: transparent;
     width: 14px;
     height: 12px;
+}
+
+.movies-card__remove {
+    cursor: pointer;
+    padding: 0;
+    margin: 0 24px 20px 0;
+    border: none;
+    background-image: url(../../images/card_cross.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    width: 7px;
+    height: 7px;
+    opacity: 0;
+}
+
+.movies-card:hover .movies-card__remove:hover {
+    opacity: 1;
 }

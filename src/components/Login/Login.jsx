@@ -69,10 +69,10 @@ export default function Login({ loggedIn, setLoggedIn }) {
                 />
                 <div className='login__input-error'>{errors?.password && <span className='login__input-error-text'>{errors?.password?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
-                <button className='login__button' type='submit'>Войти</button>
+                <button className='login__button animation-link' type='submit'>Войти</button>
             <div className='login__links'>
             <p className='login__link-description'>Ещё не зарегистрированы?</p>
-            <Link to='/signup' className='login__link'>Регистрация</Link>
+            <Link to='/signup' className='login__link animation-link'>Регистрация</Link>
             </div>
             </form>
         </div>

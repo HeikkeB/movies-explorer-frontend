@@ -8,5 +8,18 @@ select:-webkit-autofill:focus {
 -webkit-box-shadow: 0 0 0px 1000px #202020 inset;
 transition: #FFFFFF 5000s ease-in-out 0s;
 }
+
+.animation-link {
+    transition: opacity .3s ease;
+}
+
+.animation-link:hover {
+    opacity: .8;
+}
+
+.animation-link:active {
+    transform: translateX(-1px) translateY(2px);
+}
+
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);

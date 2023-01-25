@@ -13,8 +13,8 @@ export default function Header({ loggedIn }) {
                 <img className='header__logo' src={headerLogo} alt='логотип'></img>
             </Link>
             <nav className='header__menu'>
-                <Link className='header__register' to='/signup'>Регистрация</Link>
-                <Link className='header__login' to='/signin'>Войти</Link>
+                <Link className='header__register animation-link' to='/signup'>Регистрация</Link>
+                <Link className='header__login animation-link' to='/signin'>Войти</Link>
             </nav>
         </header>
     )}

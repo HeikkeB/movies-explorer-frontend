@@ -38,6 +38,10 @@
     text-decoration: none;
 }
 
+.header__logo {
+    animation: move 10s infinite linear;
+}
+
 @media screen and (max-width: 769px) {
     .header {
         padding: 20px 30px;
@@ -60,4 +64,16 @@
         padding: 5px 12px;
     }
 
+}
+
+@keyframes move {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    50% {
+        transform: rotateZ(180deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
 }

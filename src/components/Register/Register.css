@@ -110,6 +110,7 @@
     line-height: 1.2;
     text-align: center;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .register__links {

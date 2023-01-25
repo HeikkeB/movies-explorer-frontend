@@ -16,7 +16,7 @@ export default function AboutMe() {
                                                             и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. 
                                                             С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, 
                                                             начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-                <a className='about-me__content-link' href='https://github.com/HeikkeB' target='_blank' rel="noreferrer">Github</a>
+                <a className='about-me__content-link animation-link' href='https://github.com/HeikkeB' target='_blank' rel="noreferrer">Github</a>
             </div>
             <img className='about-me__photo' src={myPhoto} alt='my photography'></img>
         </div>
