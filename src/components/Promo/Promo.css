@@ -15,8 +15,6 @@
 }
 
 .promo__left-item-title {
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 50px;
     line-height: 1.2; 
@@ -25,8 +23,6 @@
 }
 
 .promo__left-item-description {
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 13px;
     line-height: 1.2;   
@@ -43,8 +39,6 @@
     max-height: 36px;
     border: 1px #FFFFFF solid;
     border-radius: 3px;
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.3;

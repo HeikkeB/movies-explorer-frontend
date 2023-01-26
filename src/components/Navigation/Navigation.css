@@ -1,6 +1,13 @@
 .navigation {
-    padding: 18px 70px;
+    padding: 18px 70px;   
+}
+
+.navigation_dark-theme {
     background: #202020;
+}
+
+.navigation_green-theme {
+    background: #073042;
 }
 
 .navigation__container {

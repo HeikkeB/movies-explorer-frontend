@@ -1,13 +1,24 @@
-import React from 'react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import './SearchForm.css'
 import searchIcon from '../../images/searcher_icon.svg'
 
 export default function SearchForm() {
+    const [search, setSearch] = useState('')
+    const {
+        register,
+        formState: {
+            errors, isValid,
+        },
+        handleSubmit,
+    } = useForm({
+        mode: 'onBlur',
+    });
   return (
     <section className='search-form'>
         <div className='search-form__container'>
             <form className='search-form__searcher'>
-                <input className='search-form__input' placeholder='Фильм'/>
+                <input className='search-form__input' required placeholder='Фильм'/>
                 <button className='search-form__button animation-btn' type='submit'>
                     <img className='search-form__button-img' src={searchIcon} alt='поиск'/>
                 </button>
