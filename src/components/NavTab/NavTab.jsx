@@ -13,7 +13,7 @@ export default function NavTab() {
               <NavLink
                 to='/'
                   className={({ isActive }) => 
-                  isActive ? 'navtab__link-mobile_active' : 'navtab__link-mobile'}>
+                  isActive ? 'navtab__link-mobile_active' : 'navtab__link-mobile animation-link'}>
                     Главная
               </NavLink>
               <NavLink 

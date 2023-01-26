@@ -16,6 +16,7 @@ transition: #FFFFFF 5000s ease-in-out 0s;
 
 .animation-link:hover {
     opacity: .8;
+    transform: translateY(-1px);
 }
 
 .animation-btn {
