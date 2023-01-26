@@ -14,7 +14,7 @@ export default function Header({ loggedIn }) {
             </Link>
             <nav className='header__menu'>
                 <Link className='header__register animation-link' to='/signup'>Регистрация</Link>
-                <Link className='header__login animation-link' to='/signin'>Войти</Link>
+                <Link className='header__login animation-btn' to='/signin'>Войти</Link>
             </nav>
         </header>
     )}

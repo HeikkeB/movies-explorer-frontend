@@ -35,7 +35,7 @@ const [loggedIn, setLoggedIn] = useState(false);
           }
         />
         <Route
-          
+          exact='true'
           path='/'
           element={
             <>

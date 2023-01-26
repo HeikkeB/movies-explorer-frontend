@@ -10,6 +10,7 @@ transition: #FFFFFF 5000s ease-in-out 0s;
 }
 
 .animation-link {
+    cursor: pointer;
     transition: opacity .3s ease;
 }
 
@@ -17,8 +18,28 @@ transition: #FFFFFF 5000s ease-in-out 0s;
     opacity: .8;
 }
 
-.animation-link:active {
+.animation-btn {
+    cursor: pointer;
+    transition: opacity .3s ease;
+}
+
+.animation-btn:hover {
+    opacity: .9;
+}
+
+.animation-btn:active {
     transform: translateX(-1px) translateY(2px);
+}
+
+.startpage-block__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: 0 0 23px;
 }
 
 @import url(./vendor/normalize.css);

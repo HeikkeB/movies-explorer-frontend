@@ -99,7 +99,7 @@ export default function Register({ loggedIn, setLoggedIn }) {
                 />
                 <div className='register__input-error'>{errors?.password && <span className='register__input-error-text'>{errors?.password?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
-                <button className='register__button animation-link' type='submit'>Зарегистрироваться</button>
+                <button className='register__button animation-btn' type='submit'>Зарегистрироваться</button>
             <div className='register__links'>
             <p className='register__link-description'>Уже зарегистрированы?</p>
             <Link to='/signin' className='register__link animation-link'>Войти</Link>

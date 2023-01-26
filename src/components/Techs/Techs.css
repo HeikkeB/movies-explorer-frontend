@@ -9,18 +9,6 @@
     flex-direction: column;
 }
 
-.techs__title {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 1.2;
-    letter-spacing: -0.04em;
-    color: #FFFFFF;
-    align-self: flex-start;
-    margin: 0 0 23px;
-}
-
 .techs__borderline {
     width: 100%;
     border-bottom: 1px #DADADA solid;
@@ -123,7 +111,7 @@
         padding: 70px 18px;
         background: #202020;
     }
-    .techs__title {
+    .startpage-block__title {
         font-size: 18px;
         margin-bottom: 28px;
     }

@@ -15,7 +15,7 @@ export default function MoviesCardList() {
     </ul>
     {
       location.pathname === '/movies' ? (
-        <button className='movies__yet-btn'>Ещё</button>
+        <button className='movies__yet-btn animation-btn'>Ещё</button>
       ) : (undefined)   
     }
     

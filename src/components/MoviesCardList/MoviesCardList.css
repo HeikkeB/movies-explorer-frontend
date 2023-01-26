@@ -38,3 +38,27 @@
     background: #2F2F2F;
     border-radius: 6px;
 }
+
+@media screen and (max-width: 821px) {
+    .movies-card-list {
+        padding: 70px 30px 60px;
+    }
+
+    .movies-card-list__list {
+        gap: 30px;
+    }
+
+    .movies__yet-btn {
+        margin-top: 80px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .movies-card-list {
+        padding: 40px 10px 60px;
+    }
+
+    .movies-card-list__list {
+        gap: 14px;
+    }
+}

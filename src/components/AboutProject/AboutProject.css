@@ -22,18 +22,6 @@
     align-items: center;
 }
 
-.about-project__title {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 1.2;
-    letter-spacing: -0.04em;
-    color: #FFFFFF;
-    align-self: flex-start;
-    margin: 0 0 23px;
-}
-
 .about-project__blackline {
     width: 100%;
     border-bottom: 1px #DADADA solid;
@@ -141,7 +129,7 @@
     .about-project__content {
         gap: 56px;
     }
-    .about-project__title {
+    .startpage-block__title {
         font-size: 18px;
         margin-bottom: 28px;
     }

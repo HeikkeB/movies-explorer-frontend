@@ -10,7 +10,7 @@ export default function NavTab() {
     <nav className={ isBurgerOpen ? 'navtab_active' : 'navtab' }>
         <div className={ isBurgerOpen ? 'navtab__menu active' : 'navtab__menu' }>
           <div className='navtab__pages'>
-              <NavLink 
+              <NavLink
                 to='/'
                   className={({ isActive }) => 
                   isActive ? 'navtab__link-mobile_active' : 'navtab__link-mobile'}>
@@ -19,20 +19,20 @@ export default function NavTab() {
               <NavLink 
                 to='/movies'
                   className={({ isActive }) => 
-                  isActive ? 'navtab__link_active' : 'navtab__link'}>
+                  isActive ? 'navtab__link_active' : 'navtab__link animation-link'}>
                     Фильмы
               </NavLink>
               <NavLink 
                 to='/saved-movies'
                   className={({ isActive }) => 
-                  isActive ? 'navtab__link_active' : 'navtab__link'}>
+                  isActive ? 'navtab__link_active' : 'navtab__link animation-link'}>
                     Сохранённые фильмы
               </NavLink>
           </div>
-          <Link className='navtab__link-account' to='/profile'>Аккаунт</Link>
+          <Link className='navtab__link-account animation-btn' to='/profile'>Аккаунт</Link>
         </div>
         <div onClick={() => setBurgerOpen(!isBurgerOpen)} className='navtab__burger'>
-        { isBurgerOpen ? <img className='navtab__burgerMenuCross' src={burgerMenuCross} alt='закрыть' /> : <img className='navtab__burgerMenu' src={burgerMenu} alt='меню' /> }  
+        { isBurgerOpen ? <img className='navtab__burgerMenuCross animation-link' src={burgerMenuCross} alt='закрыть' /> : <img className='navtab__burgerMenu animation-link' src={burgerMenu} alt='меню' /> }  
         </div>
     </nav>
   )

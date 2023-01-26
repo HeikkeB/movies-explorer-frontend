@@ -65,8 +65,8 @@ export default function Profile() {
                 </label>
             </div>
             <div className='profile__btn-container'>
-                <button className='profile__btn profile__btn_edit' type='submit'>Редактировать</button>
-                <button className='profile__btn profile__btn_exit' type='submit'>Выйти из аккаунта</button>
+                <button className='profile__btn profile__btn_edit animation-link' type='submit'>Редактировать</button>
+                <button className='profile__btn profile__btn_exit animation-link' type='submit'>Выйти из аккаунта</button>
             </div>
     </form>
 

@@ -11,6 +11,12 @@
 
 .navigation__logo-link {
     height: 38px;
+    transition: transform .3s ease;
+}
+
+.navigation__logo-link:hover {
+    transform: scale(1.02);
+    transform: rotateZ(45deg);
 }
 
 @media screen and (max-width: 768px) {

@@ -16,13 +16,13 @@
 
 .profile__title {
     font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 1.3;
-text-align: center;
-color: #FFFFFF;
-margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.3;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
 }
 
 .profile__input-container {
@@ -95,8 +95,33 @@ margin: 0;
     line-height: 1.2;
     color: #FFFFFF;
     padding: 0;
+    cursor: pointer;
 }
 
 .profile__btn_exit {
     color: #EE3465;
+}
+
+@media screen and (max-width: 769px) {
+    .profile__form {
+        margin-top: 236px;
+    }
+
+    .profile__input-container {
+        margin: 96px 0 210px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .profile__form {
+        margin-top: 70px;
+    }
+
+    .profile__input-container {
+        margin: 80px 0 380px;
+    }
+
+    .profile__input {
+        width: 260px;
+    }
 }

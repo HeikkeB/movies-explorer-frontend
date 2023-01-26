@@ -69,6 +69,10 @@
     height: 12px;
 }
 
+.movies-card__btn {
+
+}
+
 .movies-card__like_active {
     cursor: pointer;
     padding: 0;
@@ -85,7 +89,7 @@
 .movies-card__remove {
     cursor: pointer;
     padding: 0;
-    margin: 0 24px 20px 0;
+    margin: 0 21px 20px 0;
     border: none;
     background-image: url(../../images/card_cross.svg);
     background-repeat: no-repeat;
@@ -96,6 +100,11 @@
     opacity: 0;
 }
 
-.movies-card:hover .movies-card__remove:hover {
+.movies-card:hover .movies-card__remove {
     opacity: 1;
+    cursor: pointer;
+}
+
+.movies-card:hover .movies-card__remove:hover {
+    opacity: 0.8;
 }

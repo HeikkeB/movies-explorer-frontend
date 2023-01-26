@@ -9,18 +9,6 @@
     flex-direction: column;
 }
 
-.about-me__title {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 1.2;
-    letter-spacing: -0.04em;
-    color: #FFFFFF;
-    align-self: flex-start;
-    margin: 0 0 23px;
-}
-
 .about-me__blackline {
     width: 100%;
     border-bottom: 1px #DADADA solid;
@@ -128,7 +116,7 @@
   .about-me {
     padding: 70px 14px;
   } 
-  .about-me__title {
+  .startpage-block__title {
     font-size: 18px;
     margin-bottom: 28px;
   }
