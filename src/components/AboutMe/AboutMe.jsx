@@ -18,7 +18,7 @@ export default function AboutMe() {
                                                             начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
                 <a className='about-me__content-link animation-link' href='https://github.com/HeikkeB' target='_blank' rel="noreferrer">Github</a>
             </div>
-            <img className='about-me__photo' src={myPhoto} alt='my photography'></img>
+            <img className='about-me__photo' src={myPhoto} alt='моя фотография'></img>
         </div>
     </div>
    </section>

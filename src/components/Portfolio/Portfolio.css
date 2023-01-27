@@ -10,8 +10,6 @@
 }
 
 .portfolio__title {
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.1;
@@ -36,8 +34,6 @@
 }
 
 .portfolio__link {
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 30px;
     line-height: 90px;

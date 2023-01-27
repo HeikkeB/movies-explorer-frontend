@@ -8,17 +8,41 @@ export default function SearchForm() {
     const {
         register,
         formState: {
-            errors, isValid,
+            errors,
         },
         handleSubmit,
     } = useForm({
         mode: 'onBlur',
     });
+
+    const handleSubmitSearch = () => {
+        setSearch('')
+    }
+
+
+
   return (
     <section className='search-form'>
         <div className='search-form__container'>
-            <form className='search-form__searcher'>
-                <input className='search-form__input' required placeholder='Фильм'/>
+            <form className='search-form__searcher' onSubmit={handleSubmit(() => {
+                handleSubmitSearch();
+                })}>
+                <input className='search-form__input'
+                    placeholder='Фильм'
+                    type='text'
+                    {...register('search', {
+                        required: 'Напишите что-то в поиске',
+                        maxLength: {
+                            value: 40,
+                            message: 'максимум 40 символов'
+                        },
+                    })}
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <div className='search-form__input-error'>{
+                    errors?.search && <span className='search-form__input-error-text'>{errors?.search?.message || 'Что-то пошло не так...'}</span>
+                    }</div>
                 <button className='search-form__button animation-btn' type='submit'>
                     <img className='search-form__button-img' src={searchIcon} alt='поиск'/>
                 </button>

@@ -11,7 +11,7 @@ export default function Login({ loggedIn, setLoggedIn }) {
     const {
         register,
         formState: {
-            errors, isValid,
+            errors,
         },
         handleSubmit,
     } = useForm({

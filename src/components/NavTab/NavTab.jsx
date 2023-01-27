@@ -32,7 +32,10 @@ export default function NavTab() {
           <Link className='navtab__link-account animation-btn' to='/profile'>Аккаунт</Link>
         </div>
         <div onClick={() => setBurgerOpen(!isBurgerOpen)} className='navtab__burger'>
-        { isBurgerOpen ? <img className='navtab__burgerMenuCross animation-link' src={burgerMenuCross} alt='закрыть' /> : <img className='navtab__burgerMenu animation-link' src={burgerMenu} alt='меню' /> }  
+        { isBurgerOpen ?
+          (<img className='navtab__burgerMenuCross animation-link' src={burgerMenuCross} alt='закрыть' />
+          ) : (
+          <img className='navtab__burgerMenu animation-link' src={burgerMenu} alt='меню' />) }
         </div>
     </nav>
   )

@@ -10,7 +10,7 @@ export default function MoviesCard() {
     <li className='movies-card'>
       <div className='movies-card__container'>
       <a href='https://www.youtube.com/' target='_blank' rel='noreferrer'>
-        <img className='movies-card__img' src={imgCard} alt={imgCard.nameRU}/>
+        <img className='movies-card__img' src={imgCard} alt={'постер фильма'}/>
       </a>
         <div className='movies-card__info'>
           <div className='movies-card__info-text'>

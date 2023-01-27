@@ -26,18 +26,36 @@
     border-radius: 50px;
     padding: 0 0 0 22px;
     background-color: rgba(0, 0, 0, 0);
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.3;
     color: #ffffff;
+    transition: all .2s ease;
+}
 
+.search-form__input-error {
+    position: absolute;
+    top: 100%;
+    left: 22px;
+    border: none;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #EE3465;
+}
+
+.search-form__input-error-text {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.search-form__input:focus {
+  border: 1.5px solid rgba(170, 170, 170, 0.8);
 }
 
 .search-form__input::placeholder {
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.3;
@@ -71,8 +89,6 @@
 }
 
 .search-form__shortfilm-title {
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 13px;
     line-height: 1.4;

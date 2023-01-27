@@ -13,8 +13,6 @@
 
 .navtab__link {
     text-decoration: none;
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.3;
@@ -23,8 +21,6 @@
 }
 
 .navtab__link-account {
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
@@ -132,8 +128,6 @@
   .navtab__link-mobile {
     display: block;
     text-decoration: none;
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 1.2;
@@ -143,8 +137,6 @@
 
   .navtab__link-mobile_active {
     display: block;
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 1.3;
@@ -155,8 +147,6 @@
   }
 
   .navtab__link_active {
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 1.3;
@@ -168,8 +158,6 @@
 
   .navtab__link {
     text-decoration: none;
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 1.2;
