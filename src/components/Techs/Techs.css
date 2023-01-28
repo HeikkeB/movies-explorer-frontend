@@ -1,0 +1,118 @@
+.techs {
+    padding: 100px 70px;
+    box-sizing: border-box;
+    background: #272727;
+}
+
+.techs__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.techs__borderline {
+    width: 100%;
+    border-bottom: 1px #DADADA solid;
+}
+
+.techs__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 90px 0 100px;
+}
+
+.techs__content-title {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: -0.04em;   
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.techs__content-description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;  
+    text-align: center;
+    letter-spacing: -0.04em;    
+    color: #FFFFFF;
+    margin: 26px 0 0;
+    max-width: 460px;
+    text-align: center;
+}
+
+.techs__info {
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.techs__info-item {
+    background: #303030;
+    border-radius: 10px;
+    width: 90px;
+    height: 60px;
+}
+
+.techs__info-item-title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 60px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+@media screen and (max-width: 769px) {
+    .techs {
+        padding: 90px 50px;
+    }
+    .techs__content {
+        padding: 80px 0 83px;
+    }
+    .techs__content-description {
+        font-size: 12px;
+        margin: 23px 0 0;
+    }
+    .techs__info-item {
+        width: 84px;
+        height: 57px;
+    }
+    .techs__info-item-title {
+        font-size: 12px;
+        line-height: 57px;
+    }
+}
+
+@media screen and (max-width: 651px) {
+    .techs__content{
+        padding: 60px 0 50px;
+    }
+    .techs__info {
+        display: grid;
+        grid-template-columns: repeat(2, 84px);
+    }
+}
+
+@media screen and (max-width: 451px) {
+    .techs {
+        padding: 70px 18px;
+        background: #202020;
+    }
+    .startpage-block__title {
+        font-size: 18px;
+        margin-bottom: 28px;
+    }
+    .techs__content-title {
+        font-size: 30px;
+    }
+    .techs__content-description {
+        font-size: 11px;
+    }
+}

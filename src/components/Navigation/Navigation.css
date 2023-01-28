@@ -1,0 +1,39 @@
+.navigation {
+    padding: 18px 70px;   
+}
+
+.navigation_dark-theme {
+    background: #202020;
+}
+
+.navigation_green-theme {
+    background: #073042;
+}
+
+.navigation__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation__logo-link {
+    height: 38px;
+    transition: transform .3s ease;
+}
+
+.navigation__logo-link:hover {
+    transform: scale(1.02);
+    transform: rotateZ(45deg);
+}
+
+@media screen and (max-width: 768px) {
+    .navigation {
+        padding: 18px 30px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .navigation {
+        padding: 18px 14px;
+    }
+}
