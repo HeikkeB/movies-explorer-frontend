@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import './Profile.css'
 
-export default function Profile() {
+export default function Profile({ signOut }) {
     const [username, setUsername] = useState('Виталий')
     const [email, setEmail] = useState('pochta@yandex.ru')
     const {
@@ -71,7 +72,9 @@ export default function Profile() {
             </div>
             <div className='profile__btn-container'>
                 <button className='profile__btn profile__btn_edit animation-link' type='submit'>Редактировать</button>
-                <button className='profile__btn profile__btn_exit animation-link'>Выйти из аккаунта</button>
+                <Link to='/'>
+                <button className='profile__btn profile__btn_exit animation-link' onClick={signOut}>Выйти из аккаунта</button>
+                </Link>
             </div>
     </form>
 

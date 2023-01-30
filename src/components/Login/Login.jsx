@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import './Login.css'
 import headerLogo from '../../images/header_logo.svg'
 
-export default function Login({ loggedIn, setLoggedIn }) {
+export default function Login({ handleLogin }) {
     const history = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    useEffect(() => {
+        setEmail('')
+        setPassword('')
+    }, []);
+
     const {
         register,
         formState: {
@@ -18,11 +24,8 @@ export default function Login({ loggedIn, setLoggedIn }) {
         mode: 'onBlur',
     });
 
-    const handleSubmitReg = () => {
-        setEmail('')
-        setPassword('')
-        setLoggedIn(!loggedIn)
-        history('/')
+    function handleSubmitReg() {
+        handleLogin({ email, password })
     }
 
   return (

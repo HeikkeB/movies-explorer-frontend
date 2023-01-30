@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import './Register.css'
 import headerLogo from '../../images/header_logo.svg'
 
-export default function Register({ loggedIn, setLoggedIn }) {
-    const [username, setUsername] = useState('')
+export default function Register({ handleRegister }) {
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const history = useNavigate();
@@ -19,12 +19,14 @@ export default function Register({ loggedIn, setLoggedIn }) {
         mode: 'onBlur',
     });
 
-    const handleSubmitReg = () => {
-        setUsername('')
+    useEffect(() => {
+        setName('')
         setEmail('')
         setPassword('')
-        setLoggedIn(!loggedIn)
-        history('/')
+    }, [])
+
+    const handleSubmitReg = () => {
+        handleRegister({ name, email, password }) 
     }
 
   return (
@@ -38,10 +40,10 @@ export default function Register({ loggedIn, setLoggedIn }) {
             <section className='register__field'>
                 <span className='register__input-name'>Имя</span>
                 <input 
-                    className={errors?.username ? 'register__input_error' : 'register__input'}
+                    className={errors?.name ? 'register__input_error' : 'register__input'}
                     placeholder='Имя'
                     type='text'
-                    {...register('username', {
+                    {...register('name', {
                         required: 'Обязательное поле',
                         minLength: {
                             value: 2,
@@ -52,11 +54,11 @@ export default function Register({ loggedIn, setLoggedIn }) {
                             message: 'максимум 20 символов'
                         },
                     })}
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                 />
                 <div className='register__input-error'>{
-                    errors?.username && <span className='register__input-error-text'>{errors?.username?.message || 'Что-то пошло не так...'}</span>
+                    errors?.name && <span className='register__input-error-text'>{errors?.name?.message || 'Что-то пошло не так...'}</span>
                     }</div>
             </section>
             <section className='register__field'>
