@@ -93,6 +93,17 @@ function signOut() {
     })
 }
 
+function handleUpdateUser({ name, email }) {
+  api
+    .updateUser(name, email)
+    .then(newUserData => {
+      setCurrentUser(newUserData);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
   return (
     <currentUserContext.Provider value={currentUser}>
     <div className="App">
@@ -141,7 +152,10 @@ function signOut() {
           <Route path='/profile' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <Header loggedIn={loggedIn} />
-              <Profile signOut={signOut} />
+              <Profile
+              signOut={signOut}
+              handleUpdateUser={handleUpdateUser}
+              />
             </ProtectedRoute>
           }
           />

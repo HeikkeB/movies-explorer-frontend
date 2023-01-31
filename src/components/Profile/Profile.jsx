@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import { currentUserContext } from '../../context/CurrentUserContext'
 import './Profile.css'
 
-export default function Profile({ signOut }) {
+export default function Profile({ signOut, handleUpdateUser }) {
     const [username, setUsername] = useState('Виталий')
     const [email, setEmail] = useState('pochta@yandex.ru')
+    const currentUser = useContext(currentUserContext)
     const {
         register,
         formState: {
@@ -17,14 +19,13 @@ export default function Profile({ signOut }) {
     })
 
     const handleSubmitProfile =() => {
-        setUsername('Виталий')
-        setEmail('pochta@yandex.ru')
+        handleUpdateUser(username, email)
     }
 
   return (
     <section className='profile'>
     <form className='profile__form' onSubmit={handleSubmit(() => { handleSubmitProfile() })} >
-        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <h2 className='profile__title'>{`Привет, ${currentUser.name || ''}!`}</h2>
             <div className='profile__input-container'>
                 <label className='profile__input-label'>
                     <span className='profile__input-name'>Имя</span>

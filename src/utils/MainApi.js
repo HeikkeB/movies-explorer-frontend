@@ -64,6 +64,16 @@ class Api {
         })
         .then(this._handleResponse)
     }
+
+    updateUser(name, email) {
+        return fetch(`${this._baseURL}/users/me`, {
+            method: 'PATCH',
+            credentials: 'include',
+            headers: this._headers,
+            body: JSON.stringify({ name, email })
+        })
+        .then(this._handleResponse)
+    }
 }
 
 export const api = new Api({
