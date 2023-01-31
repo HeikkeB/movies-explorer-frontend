@@ -36,18 +36,18 @@ useEffect(() => {
 }, [loggedIn])
 
 useEffect(() => {
-  api
-   .checkToken()
-   .then((data) => {
-    if(data) {
-      setLoggedIn(true)
-      setCurrentUser(data)
-      history('/')
-    }
-   })
-   .catch((err) => {
-    console.log(err)
-   })
+    api
+     .checkToken()
+     .then((data) => {
+      if(data) {
+        setLoggedIn(true)
+        setCurrentUser(data)
+        history('/')
+      }
+     })
+     .catch((err) => {
+      console.log(err)
+     })
 }, [loggedIn])
 
 function handleRegister({ name, email, password }) {

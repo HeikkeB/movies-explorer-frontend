@@ -1,28 +1,28 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import './Login.css'
 import headerLogo from '../../images/header_logo.svg'
 
 export default function Login({ handleLogin }) {
-    const history = useNavigate()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    useEffect(() => {
-        setEmail('')
-        setPassword('')
-    }, []);
-
     const {
         register,
+        watch,
         formState: {
-            errors,
+            errors, 
+            isValid,
         },
         handleSubmit,
     } = useForm({
-        mode: 'onBlur',
+        defaultValues: {
+            email: '',
+            password: ''
+        },
+        mode: 'onChange'
     });
+
+    const email = watch('email')
+    const password = watch('password')
 
     function handleSubmitReg() {
         handleLogin({ email, password })
@@ -50,7 +50,6 @@ export default function Login({ handleLogin }) {
                         }
                     })}
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <div className='login__input-error'>{errors?.email && <span className='login__input-error-text'>{errors?.email?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
@@ -62,17 +61,28 @@ export default function Login({ handleLogin }) {
                     type='password'
                     {...register('password', {
                         required: 'Обязательное поле',
+                        minLength: {
+                            value: 4,
+                            message: 'минимум 4 символа'
+                        },
                         maxLength: {
                             value: 30,
                             message: 'максимум 30 символов'
                         },
                     })}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className='login__input-error'>{errors?.password && <span className='login__input-error-text'>{errors?.password?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
-                <button className='login__button animation-btn' type='submit'>Войти</button>
+                <button className={
+                    isValid ? (
+                        'login__button animation-btn login__button_active'
+                        ) : (
+                        'login__button login__button_unactive'
+                        )} 
+                        type='submit'>
+                        Войти
+                </button>
             <div className='login__links'>
             <p className='login__link-description'>Ещё не зарегистрированы?</p>
             <Link to='/signup' className='login__link animation-link'>Регистрация</Link>

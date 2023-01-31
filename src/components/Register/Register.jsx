@@ -1,29 +1,30 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import './Register.css'
 import headerLogo from '../../images/header_logo.svg'
 
 export default function Register({ handleRegister }) {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const history = useNavigate();
     const {
         register,
+        watch,
         formState: {
-            errors, isValid,
+            errors, 
+            isValid,
         },
         handleSubmit,
     } = useForm({
-        mode: 'onBlur',
+        defaultValues: {
+            name: '',
+            email: '',
+            password: ''
+        },
+        mode: 'onChange'
     });
 
-    useEffect(() => {
-        setName('')
-        setEmail('')
-        setPassword('')
-    }, [])
+    const name = watch('name')
+    const email = watch('email')
+    const password = watch('password')
 
     const handleSubmitReg = () => {
         handleRegister({ name, email, password }) 
@@ -53,9 +54,12 @@ export default function Register({ handleRegister }) {
                             value: 20,
                             message: 'максимум 20 символов'
                         },
+                        pattern: {
+                            value: /^[A-Za-zА-Яа-яЁё /h -]+$/,
+                            message: 'Имя должно содержать только латиницу, кириллицу, пробел или дефис'
+                        }
                     })}
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
                 />
                 <div className='register__input-error'>{
                     errors?.name && <span className='register__input-error-text'>{errors?.name?.message || 'Что-то пошло не так...'}</span>
@@ -75,7 +79,6 @@ export default function Register({ handleRegister }) {
                         }
                     })}
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <div className='register__input-error'>{errors?.email && <span className='register__input-error-text'>{errors?.email?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
@@ -97,11 +100,19 @@ export default function Register({ handleRegister }) {
                         },
                     })}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className='register__input-error'>{errors?.password && <span className='register__input-error-text'>{errors?.password?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
-                <button className='register__button animation-btn' type='submit'>Зарегистрироваться</button>
+                <button className={
+                    isValid ? (
+                        'register__button animation-btn register__button_active'
+                        ) : (
+                            'register__button register__button_unactive'
+                            )} 
+                        type='submit' 
+                        disabled={!isValid}>
+                    Зарегистрироваться
+                </button>
             <div className='register__links'>
             <p className='register__link-description'>Уже зарегистрированы?</p>
             <Link to='/signin' className='register__link animation-link'>Войти</Link>
