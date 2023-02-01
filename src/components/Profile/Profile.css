@@ -116,9 +116,16 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 1.2;
-    color: #FFFFFF;
     padding: 0;
     cursor: pointer;
+}
+
+.profile__btn_active {
+    color: #FFFFFF;
+}
+
+.profile__btn_unactive {
+    color: #ffffff99;
 }
 
 .profile__btn_exit {
