@@ -103,6 +103,9 @@ export default function Register({ handleRegister }) {
                 />
                 <div className='register__input-error'>{errors?.password && <span className='register__input-error-text'>{errors?.password?.message || 'Что-то пошло не так...'}</span>}</div>
             </section>
+            {
+                
+            }       
                 <button className={
                     isValid ? (
                         'register__button animation-btn register__button_active'

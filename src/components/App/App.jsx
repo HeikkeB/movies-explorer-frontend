@@ -28,7 +28,6 @@ useEffect(() => {
     .then((data) => {
       setLoggedIn(true)
       setCurrentUser(data)
-      history('/')
     })
     .catch((err) => {
       console.log(err)
@@ -43,7 +42,6 @@ useEffect(() => {
       if(data) {
         setLoggedIn(true)
         setCurrentUser(data)
-        history('/')
       }
      })
      .catch((err) => {
@@ -56,14 +54,11 @@ function handleRegister({ name, email, password }) {
     .createUser(name, email, password)
     .then((res) => {
       if(res.codeStatus !== 400) {
-        history('/signin')
+        handleLogin({email, password})
       }
     })
     .catch((err) => {
       return console.log(err)
-    })
-    .finally(() => {
-      console.log(`Don't worry, be happy`)
     })
 }
 
@@ -72,13 +67,10 @@ function handleLogin({ email, password }) {
     .login(email, password)
     .then(() => {
       setLoggedIn(true)
-      history('/')
+      history('/movies')
     })
     .catch((err) => {
       console.log(err)
-    })
-    .finally(() => {
-      console.log(`Don't worry, be happy`)
     })
 }
 
