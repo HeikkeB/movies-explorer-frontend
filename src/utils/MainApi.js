@@ -16,9 +16,7 @@ class Api {
         return fetch(`${this._baseURL}/signup`, {
             method: 'POST',
             credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: this._headers,
             body: JSON.stringify({ name, email, password }),
         })
         .then(this._handleResponse)
@@ -28,9 +26,7 @@ class Api {
         return fetch(`${this._baseURL}/signin`, {
             method: 'POST',
             credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: this._headers,
             body: JSON.stringify({ email, password }),
         })
         .then(this._handleResponse)
@@ -40,9 +36,7 @@ class Api {
         return fetch(`${this._baseURL}/signout`, {
             method: 'POST',
             credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: this._headers,
         })
         .then(this._handleResponse)
     }
@@ -50,9 +44,7 @@ class Api {
     checkToken() {
         return fetch(`${this._baseURL}/users/me`, {
             credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: this._headers,
         })
         .then(this._handleResponse)
     }
@@ -71,6 +63,32 @@ class Api {
             credentials: 'include',
             headers: this._headers,
             body: JSON.stringify({ name, email })
+        })
+        .then(this._handleResponse)
+    }
+
+    createMovies(data) {
+        return fetch(`${this._baseURL}/movies`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                ...data.body
+            })
+        })
+        .then(this._handleResponse)
+    }
+
+    getSaveMovies() {
+        return fetch(`${this._baseURL}/movies`, {
+            headers: this._headers
+        })
+        .then(this._handleResponse)
+    }
+
+    removeMovie(data) {
+        return fetch(`${this._baseURL}/movies/${data}`, {
+            method: 'DELETE',
+            headers: this._headers,
         })
         .then(this._handleResponse)
     }

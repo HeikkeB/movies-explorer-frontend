@@ -17,6 +17,7 @@ import Profile from '../Profile/Profile';
 function App() {
 const [loggedIn, setLoggedIn] = useState(false);
 const [currentUser, setCurrentUser] = useState({})
+const [savedMoviesList, setSavedMoviesList] = useState([])
 
 const history = useNavigate()
 
@@ -104,6 +105,16 @@ function handleUpdateUser({ name, email }) {
     })
 }
 
+// add to save movies and put like
+function handleSaveMovie(movie) {
+  api
+    .createMovies(movie)
+    .then(newMovie => setSavedMoviesList([newMovie, ...savedMoviesList]))
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
   return (
     <currentUserContext.Provider value={currentUser}>
     <div className="App">
@@ -136,7 +147,7 @@ function handleUpdateUser({ name, email }) {
           <Route path='/movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
             <Header loggedIn={loggedIn} />
-              <Movies />
+              <Movies likeClick={handleSaveMovie} />
               <Footer />
             </ProtectedRoute>
           }

@@ -22,12 +22,15 @@ export default function Profile({ signOut, handleUpdateUser }) {
         mode: 'onChange',
     })
 
-    const name = watch('name', currentUser.name)
+    const name = watch('name')
     const email = watch('email')
 
     const handleSubmitProfile =() => {
         handleUpdateUser({name, email})
     }
+
+    const InitialStateDisable = (currentUser.name === name && currentUser.email === email)
+    const activeStyleValidateBtn = (currentUser.name !== name || currentUser.email !== email)
 
   return (
     <section className='profile'>
@@ -81,13 +84,13 @@ export default function Profile({ signOut, handleUpdateUser }) {
                 </label>
             </div>
             <div className='profile__btn-container'>
-                <button className={ isValid ? (
+                <button className={ (isValid && activeStyleValidateBtn) ? (
                         'profile__btn animation-link profile__btn_active'
                             ) : (
                                 'profile__btn animation-link profile__btn_unactive' 
                                 )} 
                             type='submit'
-                        disabled={!isValid}>
+                        disabled={InitialStateDisable || !isValid}>
                     Редактировать
                 </button>
                 <Link to='/'>
