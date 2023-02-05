@@ -1,16 +1,27 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import './MoviesCardList.css'
 
-export default function MoviesCardList() {
-  const [ showMovie, setShowMovie ] = React.useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+export default function MoviesCardList({ savedMoviesList, moviesList }) {
+  const [ showMovieList, setShowMovieList ] = useState([])
+  const [showDetails, setShowDetails] = useState({ total: 12, more: 3 })
+
   const location = useLocation()
+
+  useEffect(() => {
+    if(moviesList.length) {
+      const res = moviesList.filter((item, i) => i < showDetails.total)
+      setShowMovieList(res)
+    }
+
+  }, [moviesList, showDetails.total]);
+
   return (
     <section className='movies-card-list'>
     <ul className='movies-card-list__list'>
-      {showMovie.map((movie, index) => (
-        <MoviesCard key={index} movie={movie} />
+      {showMovieList.map((movie) => (
+        <MoviesCard key={movie.id || movie._id} movie={movie} />
       ))}
     </ul>
     {

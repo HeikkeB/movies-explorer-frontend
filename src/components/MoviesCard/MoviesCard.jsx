@@ -1,21 +1,31 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import imgCard from '../../images/img_card.png'
 import './MoviesCard.css'
 
-export default function MoviesCard() {
+export default function MoviesCard({ movie }) {
   const [like, setLike] = useState(false)
   const location = useLocation()
+
+  function changeDuration(duration) {
+    const hours = Math.trunc(duration / 60);
+    const minutes = duration % 60;
+    if(hours === 0) {
+      return `${minutes}м`;
+    } else {
+      return `${hours}ч ${minutes}м`;
+    }
+  }
+
   return (
     <li className='movies-card'>
       <div className='movies-card__container'>
-      <a href='https://www.youtube.com/' target='_blank' rel='noreferrer'>
-        <img className='movies-card__img' src={imgCard} alt={'постер фильма'}/>
+      <a href={movie.trailerLink} target='_blank' rel='noreferrer'>
+        <img className='movies-card__img' src={`https://api.nomoreparties.co/${movie.image.url}`} alt={movie.nameRU}/>
       </a>
         <div className='movies-card__info'>
           <div className='movies-card__info-text'>
-            <h3 className='movies-card__title'>{'Бег это свобода'}</h3>
-            <p className='movies-card__duration'>{'1ч 44м'}</p>
+            <h3 className='movies-card__title'>{movie.nameRU}</h3>
+            <p className='movies-card__duration'>{changeDuration(movie.duration)}</p>
           </div>
           {
           location.pathname === '/movies' && (

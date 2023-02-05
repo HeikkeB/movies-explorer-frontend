@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import './App.css';
-import { api } from '../../utils/MainApi';
-import { currentUserContext } from '../../context/CurrentUserContext';
-import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Register from '../Register/Register';
+import './App.css'
+import { api } from '../../utils/MainApi'
+import { currentUserContext } from '../../context/CurrentUserContext'
+import Main from '../Main/Main'
+import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
+import Register from '../Register/Register'
 import Login from '../Login/Login'
-import NotFound from '../NotFound/NotFound';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import Profile from '../Profile/Profile';
+import NotFound from '../NotFound/NotFound'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import Movies from '../Movies/Movies'
+import SavedMovies from '../SavedMovies/SavedMovies'
+import Profile from '../Profile/Profile'
 
 function App() {
 const [loggedIn, setLoggedIn] = useState(false);
@@ -139,7 +139,10 @@ function handleSaveMovie(movie) {
           <Route path='/movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
             <Header loggedIn={loggedIn} />
-              <Movies likeClick={handleSaveMovie} />
+              <Movies
+                likeClick={handleSaveMovie}
+                savedMoviesList={savedMoviesList}
+                />
               <Footer />
             </ProtectedRoute>
           }
@@ -147,7 +150,9 @@ function handleSaveMovie(movie) {
           <Route path='/saved-movies' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <Header loggedIn={loggedIn} />
-              <SavedMovies />
+              <SavedMovies
+              savedMoviesList={savedMoviesList}
+              />
               <Footer />
             </ProtectedRoute>
           }

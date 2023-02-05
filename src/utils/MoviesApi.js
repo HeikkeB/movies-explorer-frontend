@@ -14,16 +14,16 @@ class MoviesApi {
 
     getMovies() {
         return fetch(`${this._baseURL}`, {
-            credentials: 'include',
             headers: this._headers,
         })
         .then(this._handleResponse)
     }
 }
 
-export const movieApi = new MoviesApi({
+export const moviesApi = new MoviesApi({
     baseURL: 'https://api.nomoreparties.co/beatfilm-movies',
     headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
     }
 })

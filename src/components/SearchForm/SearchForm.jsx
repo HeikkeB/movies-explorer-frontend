@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useLocation } from 'react-router-dom'
 import './SearchForm.css'
 import searchIcon from '../../images/searcher_icon.svg'
+import { currentUserContext } from '../../context/CurrentUserContext'
 
-export default function SearchForm() {
+export default function SearchForm({ searchMovies }) {
     const [search, setSearch] = useState('')
+
+    const currentUser = useContext(currentUserContext)
+    const location = useLocation()
     const {
         register,
         formState: {
@@ -16,16 +21,30 @@ export default function SearchForm() {
     });
 
     const handleSubmitSearch = () => {
-        setSearch('')
+        searchMovies(search)
     }
 
+    useEffect(() => {
+        if (
+            location.pathname === '/movies' && localStorage.getItem(`${currentUser.email} - moviesSearch`)
+        ) {
+            setSearch(localStorage.getItem(`${currentUser.email} - moviesSearch`))
+        }
+    }, [currentUser])
 
+    // useEffect(() => {
+    //     if(
+    //         location.pathname === '/movies' && !search
+    //     ) {
+    //         console.log('not found')
+    //     }
+    // }, [location.pathname, search, currentUser.email])
 
   return (
     <section className='search-form'>
         <div className='search-form__container'>
             <form className='search-form__searcher' onSubmit={handleSubmit(() => {
-                handleSubmitSearch();
+                handleSubmitSearch()
                 })}>
                 <input className='search-form__input'
                     placeholder='Фильм'
@@ -49,9 +68,9 @@ export default function SearchForm() {
             </form>
             <div className='search-form__shortfilm'>
                 <p className='search-form__shortfilm-title'>Короткометражки</p>
-                <label class="search-form__switch" for="checkbox">
+                <label className="search-form__switch" htmlFor="checkbox">
                     <input className='search-form__switch-input' type="checkbox" id="checkbox" />
-                    <div class="search-form__slider search-form__round"></div>
+                    <div className="search-form__slider search-form__round"></div>
                 </label>
             </div>          
         </div>
