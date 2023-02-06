@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import './MoviesCardList.css'
 
-export default function MoviesCardList({ savedMoviesList, moviesList }) {
+export default function MoviesCardList({ savedMoviesList, moviesList, likeClick }) {
   const [ showMoviesList, setShowMoviesList ] = useState([])
   const [showDetails, setShowDetails] = useState({ total: 12, more: 3 })
 
@@ -28,11 +28,22 @@ export default function MoviesCardList({ savedMoviesList, moviesList }) {
     }
   }
 
+  function getSavedMovies(array, movie) {
+    return array.find((item) => {
+      return item.movieId === (movie.id || movie.movieId)
+    })
+  }
+
   return (
     <section className='movies-card-list'>
     <ul className='movies-card-list__list'>
       {showMoviesList.map((movie) => (
-        <MoviesCard key={movie.id || movie._id} movie={movie} />
+        <MoviesCard
+          key={movie.id || movie._id}
+          movie={movie}
+          savedMovies={getSavedMovies(savedMoviesList, movie)}
+          likeClick={likeClick}
+        />
       ))}
     </ul>
     {

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import './MoviesCard.css'
 
-export default function MoviesCard({ movie }) {
+export default function MoviesCard({savedMovies, likeClick, movie }) {
   const [like, setLike] = useState(false)
   const location = useLocation()
 
@@ -16,10 +16,16 @@ export default function MoviesCard({ movie }) {
     }
   }
 
+  function handleLikeClick() {
+    likeClick(movie)
+  }
+
+  
+
   return (
     <li className='movies-card'>
       <div className='movies-card__container'>
-      <a href={movie.trailerLink} target='_blank' rel='noreferrer'>
+      <a href={movie.trailerLink} target='_blank' rel='noreferrer' className='movies-card__link-img'>
         <img className='movies-card__img' src={`https://api.nomoreparties.co/${movie.image.url}`} alt={movie.nameRU}/>
       </a>
         <div className='movies-card__info'>

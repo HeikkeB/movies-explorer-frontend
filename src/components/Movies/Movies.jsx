@@ -89,6 +89,7 @@ export default function Movies({ likeClick, savedMoviesList }) {
         <MoviesCardList
           savedMoviesList={savedMoviesList}
           moviesList={filteredMovies}
+          likeClick={likeClick}
         />
     </section>
   )
