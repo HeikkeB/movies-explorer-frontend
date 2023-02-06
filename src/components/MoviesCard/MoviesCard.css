@@ -4,6 +4,7 @@
     border-radius: 6px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
     width: inherit;
+    max-height: 286px;
 }
 
 .movies-card__container {
@@ -39,6 +40,9 @@
     color: #FFFFFF;
     margin: 0;
     padding: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .movies-card__duration {
@@ -61,8 +65,8 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
-    width: 14px;
-    height: 12px;
+    min-width: 14px;
+    min-height: 12px;
 }
 
 .movies-card__btn {
