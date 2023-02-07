@@ -27,7 +27,11 @@ export default function MoviesCard({savedMovies, likeClick, removeLikeClick, mov
     <li className='movies-card'>
       <div className='movies-card__container'>
       <a href={movie.trailerLink} target='_blank' rel='noreferrer' className='movies-card__link-img'>
-        <img className='movies-card__img' src={movie.image} alt={movie.nameRU} title={`${movie.description} \n ${movie.country} ${movie.year}`} />
+        <img
+          className='movies-card__img'
+          src={movie.image}
+          alt={movie.nameRU}
+          title={`${movie.description} \n ${movie.country} ${movie.year}`} />
       </a>
         <div className='movies-card__info'>
           <div className='movies-card__info-text'>
