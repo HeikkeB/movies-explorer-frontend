@@ -49,6 +49,20 @@ useEffect(() => {
      })
 }, [loggedIn])
 
+useEffect(() => {
+  if(loggedIn && currentUser) {
+    api
+      .getSaveMovies()
+      .then(data => {
+        const moviesList = data.filter(m => m.owner === currentUser._id)
+        setSavedMoviesList(moviesList)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+}, [currentUser, loggedIn])
+
 function handleRegister({ name, email, password }) {
   api
     .createUser(name, email, password)
@@ -107,6 +121,25 @@ function handleSaveMovie(movie) {
     })
 }
 
+function handleRemoveMovie(movie) {
+  const savedMovie = savedMoviesList.find((item) => item.movieId === movie.id || item.movieId === movie.movieId)
+  api
+    .removeMovie(savedMovie._id)
+    .then(() => {
+      const newMovieList = savedMoviesList.filter(m => {
+        if(movie.id === m.movieId || movie.movieId === m.movieId) {
+          return false
+        } else {
+          return true
+        }
+      })
+      setSavedMoviesList(newMovieList)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
   return (
     <currentUserContext.Provider value={currentUser}>
     <div className="App">
@@ -141,6 +174,7 @@ function handleSaveMovie(movie) {
             <Header loggedIn={loggedIn} />
               <Movies
                 likeClick={handleSaveMovie}
+                removeLikeClick={handleRemoveMovie}
                 savedMoviesList={savedMoviesList}
                 />
               <Footer />
@@ -152,6 +186,7 @@ function handleSaveMovie(movie) {
               <Header loggedIn={loggedIn} />
               <SavedMovies
               savedMoviesList={savedMoviesList}
+              removeLikeClick={handleRemoveMovie}
               />
               <Footer />
             </ProtectedRoute>

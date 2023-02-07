@@ -3,11 +3,17 @@ import { useLocation } from 'react-router-dom'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import './MoviesCardList.css'
 
-export default function MoviesCardList({ savedMoviesList, moviesList, likeClick }) {
+export default function MoviesCardList({ savedMoviesList, moviesList, likeClick, removeLikeClick }) {
   const [ showMoviesList, setShowMoviesList ] = useState([])
   const [showDetails, setShowDetails] = useState({ total: 12, more: 3 })
 
   const location = useLocation()
+
+  useEffect(() => {
+    if(location.pathname === '/movies') {
+      setShowDetails({ total: 12, more: 3 })
+    }
+  }, [location.pathname])
 
   useEffect(() => {
     if(moviesList.length) {
@@ -43,6 +49,7 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick 
           movie={movie}
           savedMovies={getSavedMovies(savedMoviesList, movie)}
           likeClick={likeClick}
+          removeLikeClick={removeLikeClick}
         />
       ))}
     </ul>
@@ -50,8 +57,7 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick 
       location.pathname === '/movies' ? (
         <button className='movies__yet-btn animation-btn' onClick={handleMoreBtn}>Ещё</button>
       ) : (undefined)   
-    }
-    
+    }   
     </section>
   )
 }
