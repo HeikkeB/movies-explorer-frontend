@@ -48,6 +48,20 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
       localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(moviesList))
   }
 
+  function handleShortMovies() {
+    setShortMovies(!shortMovies)
+    if(!shortMovies) {
+      if(filterShortMovies(initialMovies).length === 0) {
+        setFilteredMovies(filterShortMovies(initialMovies))
+      } else {
+        setFilteredMovies(filterShortMovies(initialMovies))
+      }
+    } else {
+      setFilteredMovies(initialMovies)
+    }
+    localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMovies)
+  }
+
   function handleSearchedSubmit(inputValue) {
     localStorage.setItem(`${currentUser.email} - shortMovies`, shortMovies)
     localStorage.setItem(`${currentUser.email} - moviesSearch`, inputValue)
@@ -88,6 +102,14 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
     }
   }, [currentUser]);
 
+  useEffect(() => {
+    if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
+      setShortMovies(true)
+    } else {
+      setShortMovies(false)
+    }
+  }, [])
+
   // useEffect(() => {
   //   const initialMovies = JSON.parse(
   //     localStorage.getItem(`${currentUser.email} - initialMovies`)
@@ -101,7 +123,8 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
     <section className='movies'>
         <SearchForm
           searchMovies={handleSearchedSubmit}
-          
+          filteredShortMovies={handleShortMovies}
+          shortMovies={shortMovies}
         />
         <MoviesCardList
           savedMoviesList={savedMoviesList}

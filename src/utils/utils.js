@@ -19,13 +19,13 @@ function filterMovies(movies, userQuery, shortMovies) {
 
 function adaptBackendMovies(movies) {
   movies.forEach((movie) => {
-    if(!movie.image) {
-      movie.image = 'https://media.istockphoto.com/id/1416208685/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=Wa2XQXJhwu9JFfSMz55HQzuudj32yIZ6jC33icNCacg='
-      movie.thumbnail = 'https://media.istockphoto.com/id/1416208685/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=Wa2XQXJhwu9JFfSMz55HQzuudj32yIZ6jC33icNCacg='
-    } else {
-      movie.image = `https://api.nomoreparties.co${movie.image.url}`
-      movie.thumbnail = `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`
-    }
+    // if(!movie.image) {
+    //   movie.image = 'https://media.istockphoto.com/id/1416208685/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=Wa2XQXJhwu9JFfSMz55HQzuudj32yIZ6jC33icNCacg='
+    //   movie.thumbnail = 'https://media.istockphoto.com/id/1416208685/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?b=1&s=170667a&w=0&k=20&c=Wa2XQXJhwu9JFfSMz55HQzuudj32yIZ6jC33icNCacg='
+    // } else {
+    //   movie.image = `https://api.nomoreparties.co${movie.image.url}`
+    //   movie.thumbnail = `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`
+    // }
     if(!movie.country) {
       movie.country = `it's unknown`
     }

@@ -2,10 +2,11 @@ import { useState, useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
 import './SearchForm.css'
+import FilterCheckBox from '../FilterCheckBox/FilterCheckBox'
 import searchIcon from '../../images/searcher_icon.svg'
 import { currentUserContext } from '../../context/CurrentUserContext'
 
-export default function SearchForm({ searchMovies }) {
+export default function SearchForm({ searchMovies, filteredShortMovies, shortMovies }) {
     const [search, setSearch] = useState('')
 
     const currentUser = useContext(currentUserContext)
@@ -66,13 +67,7 @@ export default function SearchForm({ searchMovies }) {
                     <img className='search-form__button-img' src={searchIcon} alt='поиск'/>
                 </button>
             </form>
-            <div className='search-form__shortfilm'>
-                <p className='search-form__shortfilm-title'>Короткометражки</p>
-                <label className="search-form__switch" htmlFor="checkbox">
-                    <input className='search-form__switch-input' type="checkbox" id="checkbox" />
-                    <div className="search-form__slider search-form__round"></div>
-                </label>
-            </div>          
+            <FilterCheckBox shortMovies={shortMovies} filteredShortMovies={filteredShortMovies} />
         </div>
             <div className='search-form__bottom-line'></div>
     </section>

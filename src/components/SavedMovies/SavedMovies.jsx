@@ -18,7 +18,6 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
     savedMoviesList.length !== 0 ? setNotFound(false) : setNotFound(true)
   }, [savedMoviesList])
 
-  
   function handleSearchSubmit(inputValue) {
     const moviesList = filterMovies(savedMoviesList, inputValue, shortMovies)
 
@@ -31,12 +30,16 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
     }
   }
 
+  function handleShortMovies() {
+    setShortMovies(!shortMovies)
+  }
 
   return (
     <section className='saved-movies'>
         <SearchForm
           handleSearchSubmit={handleSearchSubmit}
           shortMovies={shortMovies}
+          filteredShortMovies={handleShortMovies}
         />
         <MoviesCardList
           moviesList={showMovies}

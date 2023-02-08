@@ -29,7 +29,7 @@ export default function MoviesCard({savedMovies, likeClick, removeLikeClick, mov
       <a href={movie.trailerLink} target='_blank' rel='noreferrer' className='movies-card__link-img'>
         <img
           className='movies-card__img'
-          src={movie.image}
+          src={location.pathname === '/movies' ? (`https://api.nomoreparties.co${movie.image.url}`) : (movie.image)}
           alt={movie.nameRU}
           title={`${movie.description} \n ${movie.country} ${movie.year}`} />
       </a>
