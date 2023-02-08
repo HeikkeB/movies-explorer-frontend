@@ -18,6 +18,16 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
     savedMoviesList.length !== 0 ? setNotFound(false) : setNotFound(true)
   }, [savedMoviesList])
 
+  useEffect(() => {
+    if (localStorage.setItem(`${currentUser.email} - shortMovies`, true)) {
+      setShortMovies(true)
+      setShowMovies(filterShortMovies(savedMoviesList))
+    } else {
+      setShortMovies(false)
+      setShowMovies(savedMoviesList)
+    }
+  }, [currentUser, savedMoviesList])
+
   function handleSearchSubmit(inputValue) {
     const moviesList = filterMovies(savedMoviesList, inputValue, shortMovies)
 
@@ -31,7 +41,15 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
   }
 
   function handleShortMovies() {
-    setShortMovies(!shortMovies)
+    if(!shortMovies) {
+      setShortMovies(true)
+      localStorage.setItem(`${currentUser.email} - shortMovies`, true)
+      setShowMovies(filterShortMovies(filterSearchMovies))
+    } else {
+      setShortMovies(false)
+      localStorage.setItem(`${currentUser.email} - shortMovies`, false)
+      setShowMovies(filterSearchMovies)
+    }
   }
 
   return (
