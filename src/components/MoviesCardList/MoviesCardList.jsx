@@ -9,11 +9,11 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
 
   const location = useLocation()
 
-  useEffect(() => {
-    if(location.pathname === '/movies') {
-      setShowDetails({ total: 12, more: 3 })
-    }
-  }, [location.pathname])
+  // useEffect(() => {
+  //   if(location.pathname === '/movies') {
+  //     setShowDetails({ total: 12, more: 3 })
+  //   }
+  // }, [location.pathname])
 
   useEffect(() => {
     if(moviesList.length) {
@@ -22,6 +22,29 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
     }
 
   }, [moviesList, showDetails.total]);
+
+  useEffect(() => {
+    showDetailsList()
+  }, [])
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.addEventListener('resize', showDetailsList)
+    }, 300)
+  },[])
+
+  function showDetailsList() {
+    const display = window.innerWidth
+    if(display > 996) {
+      setShowDetails({total: 12, more: 3})
+    } 
+    if (display < 996) {
+      setShowDetails({total: 8, more: 2})
+    }
+    if (display < 629) {
+      setShowDetails({total: 5, more: 2})
+    }
+  }
 
   function handleMoreBtn() {
     const start = showMoviesList.length

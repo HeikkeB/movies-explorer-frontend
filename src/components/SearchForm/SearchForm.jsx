@@ -51,7 +51,7 @@ export default function SearchForm({ searchMovies, filteredShortMovies, shortMov
                     placeholder='Фильм'
                     type='text'
                     {...register('search', {
-                        required: 'Напишите что-то в поиске',
+                        required: 'Нужно ввести ключевое слово',
                         maxLength: {
                             value: 40,
                             message: 'максимум 40 символов'
