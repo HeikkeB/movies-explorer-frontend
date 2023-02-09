@@ -20,7 +20,6 @@ function App() {
 const [loggedIn, setLoggedIn] = useState(false);
 const [currentUser, setCurrentUser] = useState({})
 const [savedMoviesList, setSavedMoviesList] = useState([])
-const [loading, setLoading] = useState(false)
 
 const history = useNavigate()
 
@@ -146,6 +145,7 @@ function handleSaveMovie(movie) {
     .then(newMovie => setSavedMoviesList([newMovie, ...savedMoviesList]))
     .catch((err) => {
       console.log(err)
+      toastInfoError(err)
     })
 }
 
@@ -166,6 +166,7 @@ function handleRemoveMovie(movie) {
     })
     .catch((err) => {
       console.log(err)
+      toastInfoError(err)
     })
 }
 
@@ -177,7 +178,6 @@ function handleRemoveMovie(movie) {
           path='/signup'
           element={ <Register
            handleRegister={handleRegister}
-           loading={loading}
             />
           }
         />
@@ -185,7 +185,6 @@ function handleRemoveMovie(movie) {
           path='/signin'
           element={ <Login
             handleLogin={handleLogin}
-            loading={loading}
             />
           }
         />

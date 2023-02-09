@@ -20,7 +20,7 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
   }, [savedMoviesList])
 
   useEffect(() => {
-    if (localStorage.setItem(`${currentUser.email} - shortMovies`, true)) {
+    if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
       setShortMovies(true)
       setShowMovies(filterShortMovies(savedMoviesList))
     } else {

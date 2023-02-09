@@ -13,27 +13,9 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
   const [allMoviesList, setAllMoviesList] = useState([])
   const [notFound, setNotFound] = useState(false)
   const [filteredMovies, setFilteredMovies] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const currentUser = useContext(currentUserContext);
-
-  // function filterShortMovies(movies) {
-  //   return movies.filter(movie => movie.duration < 40)
-  // }
-
-  // function filterMovies(movies, userQuery, shortMovies) {
-  //   const moviesByUserQuery = movies.filter((movie) => {
-  //     const movieNameRu = String(movie.nameRU).toLowerCase().trim()
-  //     const movieNameEn = String(movie.nameEN).toLowerCase().trim()
-  //     const userMovie = userQuery.toLowerCase().trim()
-  //     return movieNameRu.indexOf(userMovie) !== -1 || movieNameEn.indexOf(userMovie) !== -1
-  //   })
-
-  //   if(shortMovies) {
-  //     return filterShortMovies(moviesByUserQuery)
-  //   } else {
-  //     return moviesByUserQuery
-  //   }
-  // }
 
   function handleFilteredMovies(movies, userQuery, shortMovies) {
     const moviesList = filterMovies(movies, userQuery, shortMovies)
@@ -68,6 +50,7 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
     localStorage.setItem(`${currentUser.email} - moviesSearch`, inputValue)
 
     if (allMoviesList.length === 0) {
+      setLoading(true)
       moviesApi
         .getMovies()
         .then((movies) => {
@@ -81,6 +64,9 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
         })
         .catch((err) => {
           console.log(err)
+        })
+        .finally(() => {
+          setLoading(false)
         })
     } else {
       handleFilteredMovies(allMoviesList, inputValue, shortMovies)
@@ -109,7 +95,7 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
     } else {
       setShortMovies(false)
     }
-  }, [])
+  }, [currentUser.email])
 
   // useEffect(() => {
   //   const initialMovies = JSON.parse(
@@ -135,6 +121,7 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
           moviesList={filteredMovies}
           likeClick={likeClick}
           removeLikeClick={removeLikeClick}
+          loading={loading}
         />
         }
     </section>

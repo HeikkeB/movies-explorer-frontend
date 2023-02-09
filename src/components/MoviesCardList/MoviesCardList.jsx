@@ -1,19 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import MoviesCard from '../MoviesCard/MoviesCard'
+import Preloader from '../Preloader/Preloader'
 import './MoviesCardList.css'
 
-export default function MoviesCardList({ savedMoviesList, moviesList, likeClick, removeLikeClick }) {
+export default function MoviesCardList({ savedMoviesList, moviesList, likeClick, removeLikeClick, loading }) {
   const [ showMoviesList, setShowMoviesList ] = useState([])
   const [showDetails, setShowDetails] = useState({ total: 12, more: 3 })
 
   const location = useLocation()
-
-  // useEffect(() => {
-  //   if(location.pathname === '/movies') {
-  //     setShowDetails({ total: 12, more: 3 })
-  //   }
-  // }, [location.pathname])
 
   useEffect(() => {
     if(moviesList.length) {
@@ -65,24 +60,28 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
 
   return (
     <section className='movies-card-list'>
-    <ul className='movies-card-list__list'>
-      {showMoviesList.map((movie) => (
-        <MoviesCard
-          key={movie.id || movie._id}
-          movie={movie}
-          savedMovies={getSavedMovies(savedMoviesList, movie)}
-          likeClick={likeClick}
-          removeLikeClick={removeLikeClick}
-        />
-      ))}
-    </ul>
-    {
-      location.pathname === '/movies' ? (
-        moviesList.length > 3 && moviesList.length > showMoviesList.length ? (
-          <button className='movies__yet-btn animation-btn' onClick={handleMoreBtn}>Ещё</button>
-          ) : (undefined)       
-      ) : (undefined)   
-    }   
+    {loading ? <Preloader /> : (
+      <>
+        <ul className='movies-card-list__list'>
+          {showMoviesList.map((movie) => (
+            <MoviesCard
+              key={movie.id || movie._id}
+              movie={movie}
+              savedMovies={getSavedMovies(savedMoviesList, movie)}
+              likeClick={likeClick}
+              removeLikeClick={removeLikeClick}
+            />
+          ))}
+        </ul>
+        {
+          location.pathname === '/movies' ? (
+            moviesList.length > 3 && moviesList.length > showMoviesList.length ? (
+              <button className='movies__yet-btn animation-btn' onClick={handleMoreBtn}>Ещё</button>
+              ) : (undefined)       
+          ) : (undefined)   
+        }
+      </>
+    )}
     </section>
   )
 }

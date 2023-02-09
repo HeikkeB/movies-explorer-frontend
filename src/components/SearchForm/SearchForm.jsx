@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
 import './SearchForm.css'
@@ -7,32 +7,32 @@ import searchIcon from '../../images/searcher_icon.svg'
 import { currentUserContext } from '../../context/CurrentUserContext'
 
 export default function SearchForm({ searchMovies, filteredShortMovies, shortMovies }) {
-    const [search, setSearch] = useState('')
 
     const currentUser = useContext(currentUserContext)
     const location = useLocation()
 
     useEffect(() => {
         if (location.pathname === '/movies' && localStorage.getItem(`${currentUser.email} - moviesSearch`)) {
-            const moviesSearch = localStorage.getItem(`${currentUser.email} - moviesSearch`)
-            setSearch(moviesSearch)
+            localStorage.getItem(`${currentUser.email} - moviesSearch`)
         }
     }, [currentUser.email, location.pathname])
 
     const {
         register,
+        watch,
         formState: {
             errors,
         },
         handleSubmit,
     } = useForm({
-        mode: 'onSubmit',
+        mode: 'onBlur',
     });
+
+    const search = watch('search', '')
 
     const handleSubmitSearch = () => {
         searchMovies(search)
     }
-
 
   return (
     <section className='search-form'>
@@ -51,7 +51,6 @@ export default function SearchForm({ searchMovies, filteredShortMovies, shortMov
                         },
                     })}
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
                 />
                 <div className='search-form__input-error'>{
                     errors?.search && <span className='search-form__input-error-text'>{errors?.search?.message || 'Что-то пошло не так...'}</span>
