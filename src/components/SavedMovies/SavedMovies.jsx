@@ -33,6 +33,7 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
 
     if(moviesList.length === 0) {
       setNotFound(true)
+      console.log('nothing')
     } else {
       setNotFound(false)
       setFilterSearchMovies(moviesList)
@@ -55,7 +56,7 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
   return (
     <section className='saved-movies'>
         <SearchForm
-          handleSearchSubmit={handleSearchSubmit}
+          searchMovies={handleSearchSubmit}
           shortMovies={shortMovies}
           filteredShortMovies={handleShortMovies}
         />

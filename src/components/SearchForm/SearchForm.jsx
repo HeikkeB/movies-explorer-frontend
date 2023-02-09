@@ -11,6 +11,14 @@ export default function SearchForm({ searchMovies, filteredShortMovies, shortMov
 
     const currentUser = useContext(currentUserContext)
     const location = useLocation()
+
+    useEffect(() => {
+        if (location.pathname === '/movies' && localStorage.getItem(`${currentUser.email} - moviesSearch`)) {
+            const moviesSearch = localStorage.getItem(`${currentUser.email} - moviesSearch`)
+            setSearch(moviesSearch)
+        }
+    }, [location.pathname])
+
     const {
         register,
         formState: {
@@ -18,28 +26,13 @@ export default function SearchForm({ searchMovies, filteredShortMovies, shortMov
         },
         handleSubmit,
     } = useForm({
-        mode: 'onBlur',
+        mode: 'onSubmit',
     });
 
     const handleSubmitSearch = () => {
         searchMovies(search)
     }
 
-    useEffect(() => {
-        if (
-            location.pathname === '/movies' && localStorage.getItem(`${currentUser.email} - moviesSearch`)
-        ) {
-            setSearch(localStorage.getItem(`${currentUser.email} - moviesSearch`))
-        }
-    }, [currentUser])
-
-    // useEffect(() => {
-    //     if(
-    //         location.pathname === '/movies' && !search
-    //     ) {
-    //         console.log('not found')
-    //     }
-    // }, [location.pathname, search, currentUser.email])
 
   return (
     <section className='search-form'>

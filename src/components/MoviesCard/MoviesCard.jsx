@@ -31,7 +31,7 @@ export default function MoviesCard({savedMovies, likeClick, removeLikeClick, mov
           className='movies-card__img'
           src={location.pathname === '/movies' ? (`https://api.nomoreparties.co${movie.image.url}`) : (movie.image)}
           alt={movie.nameRU}
-          title={`${movie.description} \n ${movie.country} ${movie.year}`} />
+        />
       </a>
         <div className='movies-card__info'>
           <div className='movies-card__info-text'>
