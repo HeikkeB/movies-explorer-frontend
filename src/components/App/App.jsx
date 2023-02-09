@@ -3,6 +3,8 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import './App.css'
 import { api } from '../../utils/MainApi'
 import { currentUserContext } from '../../context/CurrentUserContext'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
@@ -18,6 +20,7 @@ function App() {
 const [loggedIn, setLoggedIn] = useState(false);
 const [currentUser, setCurrentUser] = useState({})
 const [savedMoviesList, setSavedMoviesList] = useState([])
+const [loading, setLoading] = useState(false)
 
 const history = useNavigate()
 
@@ -63,6 +66,14 @@ useEffect(() => {
   }
 }, [currentUser, loggedIn])
 
+function toastInformation(message) {
+  if(message === 'Error: 409') {
+   toast.error('Пользователь с таким E-mail уже есть')
+  } else if (message === 'Error: 400' || message === 'Error: 500'){
+    toast.error('Что-то пошло не так')
+  }
+}
+
 function handleRegister({ name, email, password }) {
   api
     .createUser(name, email, password)
@@ -70,13 +81,18 @@ function handleRegister({ name, email, password }) {
       if(res.codeStatus !== 400) {
         handleLogin({email, password})
       }
+      if(res.codeStatus === 400 || res.codeStatus === 500) {
+        toastInformation(res.codeStatus)
+      }
     })
     .catch((err) => {
-      return console.log(err)
+      console.log(err)
+      toastInformation(err)
     })
 }
 
 function handleLogin({ email, password }) {
+  setLoading(true)
   api
     .login(email, password)
     .then(() => {
@@ -85,6 +101,9 @@ function handleLogin({ email, password }) {
     })
     .catch((err) => {
       console.log(err)
+    })
+    .finally(() => {
+      setLoading(false)
     })
 }
 
@@ -148,6 +167,7 @@ function handleRemoveMovie(movie) {
           path='/signup'
           element={ <Register
            handleRegister={handleRegister}
+           loading={loading}
             />
           }
         />
@@ -155,6 +175,7 @@ function handleRemoveMovie(movie) {
           path='/signin'
           element={ <Login
             handleLogin={handleLogin}
+            loading={loading}
             />
           }
         />
@@ -204,6 +225,20 @@ function handleRemoveMovie(movie) {
           />
           <Route path='*' element={ loggedIn ? <Navigate to='/' /> : <NotFound /> } />
     </Routes>
+
+    <ToastContainer 
+      position="bottom-left"
+      autoClose={4000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss={false}
+      draggable
+      pauseOnHover
+      theme="#272727"
+    />
+
     </div>
     </currentUserContext.Provider>
   )

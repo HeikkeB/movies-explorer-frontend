@@ -78,7 +78,7 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
     </ul>
     {
       location.pathname === '/movies' ? (
-        moviesList.length > 3 ? (
+        moviesList.length > 3 && moviesList.length > showMoviesList.length ? (
           <button className='movies__yet-btn animation-btn' onClick={handleMoreBtn}>Ещё</button>
           ) : (undefined)       
       ) : (undefined)   

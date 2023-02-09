@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import './Register.css'
 import headerLogo from '../../images/header_logo.svg'
+import { useLocation } from 'react-router-dom'
 
 export default function Register({ handleRegister }) {
+    const location = useLocation()
+
     const {
         register,
         watch,
@@ -27,7 +30,7 @@ export default function Register({ handleRegister }) {
     const password = watch('password')
 
     const handleSubmitReg = () => {
-        handleRegister({ name, email, password }) 
+        handleRegister({ name, email, password })
     }
 
   return (
