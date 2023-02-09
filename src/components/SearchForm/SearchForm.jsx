@@ -17,7 +17,7 @@ export default function SearchForm({ searchMovies, filteredShortMovies, shortMov
             const moviesSearch = localStorage.getItem(`${currentUser.email} - moviesSearch`)
             setSearch(moviesSearch)
         }
-    }, [location.pathname])
+    }, [currentUser.email, location.pathname])
 
     const {
         register,

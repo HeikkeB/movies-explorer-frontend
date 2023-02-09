@@ -4,6 +4,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import { filterShortMovies, filterMovies } from '../../utils/utils'
 import './SavedMovies.css'
 import { currentUserContext } from '../../context/CurrentUserContext';
+import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 
 export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
 
@@ -11,7 +12,7 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
   const [shortMovies, setShortMovies] = useState(false)
   const [showMovies, setShowMovies] = useState(savedMoviesList)
   const [filterSearchMovies, setFilterSearchMovies] = useState(showMovies)
-  const [NotFound, setNotFound] = useState(false)
+  const [notFound, setNotFound] = useState(false)
   
   useEffect(() => {
     setFilterSearchMovies(savedMoviesList)
@@ -60,11 +61,15 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
           shortMovies={shortMovies}
           filteredShortMovies={handleShortMovies}
         />
+        {notFound === true ? 
+         <NotFoundSearch />
+         : 
         <MoviesCardList
           moviesList={showMovies}
           savedMoviesList={savedMoviesList}
           removeLikeClick={removeLikeClick}
         />
+        }
     </section>
   )
 }

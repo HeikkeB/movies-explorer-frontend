@@ -78,7 +78,9 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
     </ul>
     {
       location.pathname === '/movies' ? (
-        <button className='movies__yet-btn animation-btn' onClick={handleMoreBtn}>Ещё</button>
+        moviesList.length > 3 ? (
+          <button className='movies__yet-btn animation-btn' onClick={handleMoreBtn}>Ещё</button>
+          ) : (undefined)       
       ) : (undefined)   
     }   
     </section>

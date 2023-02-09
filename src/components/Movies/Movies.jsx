@@ -3,6 +3,7 @@ import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import { adaptBackendMovies, filterMovies, filterShortMovies } from '../../utils/utils'
 import './Movies.css'
+import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 import { currentUserContext } from '../../context/CurrentUserContext'
 import { moviesApi } from '../../utils/MoviesApi' 
 
@@ -10,7 +11,7 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
   const [shortMovies, setShortMovies] = useState(false)
   const [initialMovies, setInitialMovies] = useState([])
   const [allMoviesList, setAllMoviesList] = useState([])
-  const [NotFound, setNotFound] = useState(false)
+  const [notFound, setNotFound] = useState(false)
   const [filteredMovies, setFilteredMovies] = useState([])
 
   const currentUser = useContext(currentUserContext);
@@ -126,12 +127,16 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
           filteredShortMovies={handleShortMovies}
           shortMovies={shortMovies}
         />
+        {notFound === true ? 
+         <NotFoundSearch />
+         : 
         <MoviesCardList
           savedMoviesList={savedMoviesList}
           moviesList={filteredMovies}
           likeClick={likeClick}
           removeLikeClick={removeLikeClick}
         />
+        }
     </section>
   )
 }
