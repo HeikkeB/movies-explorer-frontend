@@ -66,11 +66,15 @@ useEffect(() => {
   }
 }, [currentUser, loggedIn])
 
-function toastInformation(message) {
+function toastInfoError(message) {
   if(message === 'Error: 409') {
    toast.error('Пользователь с таким E-mail уже есть')
   } else if (message === 'Error: 400' || message === 'Error: 500'){
     toast.error('Что-то пошло не так')
+  } else if (message === 'Error: 401') {
+    toast.error('Неправильный логин или пароль')
+  } else if (message === 'Error: 429') {
+    toast.warn('Слишком много запросов к серверу')
   }
 }
 
@@ -82,28 +86,26 @@ function handleRegister({ name, email, password }) {
         handleLogin({email, password})
       }
       if(res.codeStatus === 400 || res.codeStatus === 500) {
-        toastInformation(res.codeStatus)
+        toastInfoError(res.codeStatus)
       }
     })
     .catch((err) => {
       console.log(err)
-      toastInformation(err)
+      toastInfoError(err)
     })
 }
 
 function handleLogin({ email, password }) {
-  setLoading(true)
   api
     .login(email, password)
     .then(() => {
       setLoggedIn(true)
       history('/movies')
+      toast.success('Добро пожаловать!')
     })
     .catch((err) => {
       console.log(err)
-    })
-    .finally(() => {
-      setLoading(false)
+      toastInfoError(err)
     })
 }
 
@@ -113,9 +115,14 @@ function signOut() {
     .then(() => {
       setLoggedIn(false)
       history('/')
+      localStorage.removeItem(`${currentUser.email} - movies`)
+      localStorage.removeItem(`${currentUser.email} - shortMovies`)
+      localStorage.removeItem(`${currentUser.email} - moviesSearch`)
+      toast.success('До скорой встречи!')
     })
     .catch((err) => {
       console.log(err)
+      toastInfoError(err)
     })
 }
 
@@ -124,9 +131,11 @@ function handleUpdateUser({ name, email }) {
     .updateUser(name, email)
     .then(newUserData => {
       setCurrentUser(newUserData);
+      toast.success('Ваши данные обновлены!')
     })
     .catch((err) => {
       console.log(err)
+      toastInfoError(err)
     })
 }
 
@@ -153,6 +162,7 @@ function handleRemoveMovie(movie) {
         }
       })
       setSavedMoviesList(newMovieList)
+      toast.success('Фильм удален из ваших сохранений')
     })
     .catch((err) => {
       console.log(err)
@@ -226,9 +236,9 @@ function handleRemoveMovie(movie) {
           <Route path='*' element={ loggedIn ? <Navigate to='/' /> : <NotFound /> } />
     </Routes>
 
-    <ToastContainer 
+    <ToastContainer
       position="bottom-left"
-      autoClose={4000}
+      autoClose={3000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
@@ -236,7 +246,7 @@ function handleRemoveMovie(movie) {
       pauseOnFocusLoss={false}
       draggable
       pauseOnHover
-      theme="#272727"
+      theme="dark"
     />
 
     </div>

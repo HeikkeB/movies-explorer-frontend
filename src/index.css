@@ -41,5 +41,10 @@ transition: #FFFFFF 5000s ease-in-out 0s;
     margin: 0 0 23px;
 }
 
+.Toastify__toast-theme--dark {
+    --toastify-color-dark : #272727 ;
+    --toastify-font-family : 'Inter', Arial, sans-serif ;
+}
+
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
