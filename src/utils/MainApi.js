@@ -108,7 +108,7 @@ class Api {
 }
 
 export const api = new Api({
-    baseURL: 'https://api.movies-searcher.nomoredomains.rocks/'/*'http://localhost:3000'*/,
+    baseURL: 'https://api.movies-searcher.nomoredomains.rocks'/*'http://localhost:3000'*/,
     headers: {
         'Content-Type': 'application/json'
     }
