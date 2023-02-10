@@ -138,7 +138,6 @@ function handleUpdateUser({ name, email }) {
     })
 }
 
-// add to save movies and put like
 function handleSaveMovie(movie) {
   api
     .createMovies(movie)
