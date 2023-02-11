@@ -21,8 +21,7 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
   useEffect(() => {
     if(location.pathname === '/movies') {
       showDetailsList()
-    }
-    if(location.pathname === '/saved-movies') {
+    } else if(location.pathname === '/saved-movies') {
       setShowDetails({total: savedMoviesList.length})
     }
   }, [location.pathname, savedMoviesList.length])
@@ -31,18 +30,24 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
     setTimeout(() => {
       window.addEventListener('resize', showDetailsList)
     }, 300)
+
+    return () => {
+      window.removeEventListener('resize', showDetailsList)
+    }
   },[])
 
   function showDetailsList() {
     const display = window.innerWidth
-    if(display > 996) {
-      setShowDetails({total: 12, more: 3})
-    } 
-    if (display < 996) {
-      setShowDetails({total: 8, more: 2})
-    }
-    if (display < 629) {
-      setShowDetails({total: 5, more: 2})
+    if(location.pathname === '/movies') {
+      if(display > 996) {
+        setShowDetails({total: 12, more: 3})
+      } 
+      if (display < 996) {
+        setShowDetails({total: 8, more: 2})
+      }
+      if (display < 629) {
+        setShowDetails({total: 5, more: 2})
+      }
     }
   }
 
