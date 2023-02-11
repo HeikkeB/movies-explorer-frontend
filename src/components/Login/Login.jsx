@@ -31,7 +31,9 @@ export default function Login({ handleLogin }) {
   return (
  <div className='login'>
         <div className='login__container'>
+        <Link to='/'>
             <img className='login__logo' src={headerLogo} alt='логотип'></img>
+        </Link>
             <h2 className='login__title'>Рады видеть!</h2>
             <form className='login__form' onSubmit={handleSubmit(() => {
                 handleSubmitReg();

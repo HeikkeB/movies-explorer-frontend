@@ -19,13 +19,13 @@ export default function NavTab() {
               <NavLink 
                 to='/movies'
                   className={({ isActive }) => 
-                  isActive ? 'navtab__link_active' : 'navtab__link animation-link'}>
+                  !isActive ? 'navtab__link_active  animation-link' : 'navtab__link'}>
                     Фильмы
               </NavLink>
               <NavLink 
                 to='/saved-movies'
                   className={({ isActive }) => 
-                  isActive ? 'navtab__link_active' : 'navtab__link animation-link'}>
+                  !isActive ? 'navtab__link_active  animation-link' : 'navtab__link'}>
                     Сохранённые фильмы
               </NavLink>
           </div>

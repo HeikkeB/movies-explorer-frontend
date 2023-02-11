@@ -19,8 +19,13 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
   }, [moviesList, showDetails.total]);
 
   useEffect(() => {
-    showDetailsList()
-  }, [])
+    if(location.pathname === '/movies') {
+      showDetailsList()
+    }
+    if(location.pathname === '/saved-movies') {
+      setShowDetails({total: savedMoviesList.length})
+    }
+  }, [location.pathname, savedMoviesList.length])
 
   useEffect(() => {
     setTimeout(() => {

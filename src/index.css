@@ -15,7 +15,7 @@ transition: #FFFFFF 5000s ease-in-out 0s;
 }
 
 .animation-link:hover {
-    opacity: .8;
+    opacity: .7;
     transform: translateY(-1px);
 }
 

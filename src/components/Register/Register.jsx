@@ -36,7 +36,9 @@ export default function Register({ handleRegister }) {
   return (
     <div className='register'>
         <div className='register__container'>
+        <Link to='/'>
             <img className='register__logo' src={headerLogo} alt='логотип'></img>
+        </Link>
             <h2 className='register__title'>Добро пожаловать!</h2>
             <form className='register__form' onSubmit={handleSubmit(() => {
                 handleSubmitReg();
