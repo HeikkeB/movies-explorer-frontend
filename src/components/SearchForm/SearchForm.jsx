@@ -25,10 +25,12 @@ export default function SearchForm({ searchMovies, filteredShortMovies, shortMov
         },
         handleSubmit,
     } = useForm({
-        mode: 'onBlur',
+        mode: 'onChange',
     });
 
-    const search = watch('search', '')
+    const search = watch('search',
+        location.pathname === '/movies' ? 
+            localStorage.getItem(`${currentUser.email} - moviesSearch`) : '')
 
     const handleSubmitSearch = () => {
         searchMovies(search)
@@ -50,7 +52,7 @@ export default function SearchForm({ searchMovies, filteredShortMovies, shortMov
                             message: 'максимум 40 символов'
                         },
                     })}
-                    value={search}
+                    value={search == null ? '' : search}
                 />
                 <div className='search-form__input-error'>{
                     errors?.search && <span className='search-form__input-error-text'>{errors?.search?.message || 'Что-то пошло не так...'}</span>

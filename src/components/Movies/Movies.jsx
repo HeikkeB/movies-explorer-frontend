@@ -32,22 +32,18 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
   }
 
   function handleShortMovies() {
-    setShortMovies(!shortMovies)
-    if(!shortMovies) {
-      if(filterShortMovies(initialMovies).length === 0) {
-        setFilteredMovies(filterShortMovies(initialMovies))
+      setShortMovies(!shortMovies)
+      if(!shortMovies) {    
+        setFilteredMovies(filterShortMovies(initialMovies))      
       } else {
-        setFilteredMovies(filterShortMovies(initialMovies))
+        setFilteredMovies(initialMovies)
       }
-    } else {
-      setFilteredMovies(initialMovies)
+      localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMovies)
     }
-    localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMovies)
-  }
 
   function handleSearchedSubmit(inputValue) {
-    localStorage.setItem(`${currentUser.email} - shortMovies`, shortMovies)
     localStorage.setItem(`${currentUser.email} - moviesSearch`, inputValue)
+    localStorage.setItem(`${currentUser.email} - shortMovies`, shortMovies)
 
     if (allMoviesList.length === 0) {
       setLoading(true)
@@ -60,7 +56,6 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
             inputValue,
             shortMovies
           )
-          // localStorage.setItem(`${currentUser.email} - initialMovies`, JSON.stringify(movies))
         })
         .catch((err) => {
           console.log(err)
@@ -91,20 +86,11 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
 
   useEffect(() => {
     if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
-      setShortMovies(true)
+      setShortMovies(true)     
     } else {
       setShortMovies(false)
     }
   }, [currentUser.email])
-
-  // useEffect(() => {
-  //   const initialMovies = JSON.parse(
-  //     localStorage.getItem(`${currentUser.email} - initialMovies`)
-  //   )
-  //   if(initialMovies) {
-  //     setAllMoviesList(initialMovies)
-  //   }
-  // }, [currentUser]);
 
   return (
     <section className='movies'>

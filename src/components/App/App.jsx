@@ -101,6 +101,7 @@ function handleLogin({ email, password }) {
       setLoggedIn(true)
       history('/movies')
       toast.success('Добро пожаловать!')
+      firstEnter()
     })
     .catch((err) => {
       console.log(err)
@@ -117,12 +118,19 @@ function signOut() {
       localStorage.removeItem(`${currentUser.email} - movies`)
       localStorage.removeItem(`${currentUser.email} - shortMovies`)
       localStorage.removeItem(`${currentUser.email} - moviesSearch`)
+      localStorage.removeItem(`${currentUser.email} - shortSavedMovies`)
       toast.success('До скорой встречи!')
     })
     .catch((err) => {
       console.log(err)
       toastInfoError(err)
     })
+}
+
+function firstEnter() {
+  if(!localStorage.getItem(`${currentUser.email} - moviesSearch`)) {
+    console.log('enter to search')
+  }
 }
 
 function handleUpdateUser({ name, email }) {

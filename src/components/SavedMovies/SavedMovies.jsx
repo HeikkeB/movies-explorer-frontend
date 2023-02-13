@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import { filterShortMovies, filterMovies } from '../../utils/utils'
@@ -14,13 +15,22 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
   const [filterSearchMovies, setFilterSearchMovies] = useState(showMovies)
   const [notFound, setNotFound] = useState(false)
   
+  const history = useNavigate()
+
+  useEffect(() => {
+    if(history) {
+      setShortMovies(false)
+      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false)
+    }
+  }, [currentUser.email, history])
+
   useEffect(() => {
     setFilterSearchMovies(savedMoviesList)
     savedMoviesList.length !== 0 ? setNotFound(false) : setNotFound(true)
   }, [savedMoviesList])
 
   useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
+    if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === 'true') {
       setShortMovies(true)
       setShowMovies(filterShortMovies(savedMoviesList))
     } else {
@@ -31,10 +41,8 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
 
   function handleSearchSubmit(inputValue) {
     const moviesList = filterMovies(savedMoviesList, inputValue, shortMovies)
-
     if(moviesList.length === 0) {
       setNotFound(true)
-      console.log('nothing')
     } else {
       setNotFound(false)
       setFilterSearchMovies(moviesList)
@@ -45,11 +53,11 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
   function handleShortMovies() {
     if(!shortMovies) {
       setShortMovies(true)
-      localStorage.setItem(`${currentUser.email} - shortMovies`, true)
+      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, true)
       setShowMovies(filterShortMovies(filterSearchMovies))
     } else {
       setShortMovies(false)
-      localStorage.setItem(`${currentUser.email} - shortMovies`, false)
+      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false)
       setShowMovies(filterSearchMovies)
     }
   }
