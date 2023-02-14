@@ -88,7 +88,6 @@
 }
 
 .login__button {
-    background: #4285F4;
     border-radius: 3px;
     border: none;
     width: 100%;
@@ -97,8 +96,18 @@
     font-size: 14px;
     line-height: 1.2;
     text-align: center;
-    color: #FFFFFF;
     cursor: pointer;
+    transition: all .3s ease;
+}
+
+.login__button_active {
+    background: #4285F4;
+    color: #FFFFFF;
+}
+
+.login__button_unactive {
+    background: #F8F8F8;
+    color: #C2C2C2;
 }
 
 .login__links {

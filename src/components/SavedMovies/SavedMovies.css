@@ -5,3 +5,9 @@
     background: #202020;
     padding-bottom: 186px;
 }
+
+@media screen and (max-width: 451px) {
+    .saved-movies {
+        padding-bottom: 118px;
+    }
+}
