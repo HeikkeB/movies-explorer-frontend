@@ -19,17 +19,25 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
 
   function handleFilteredMovies(movies, userQuery, shortMovies) {
     const moviesList = filterMovies(movies, userQuery, shortMovies)
-    if (moviesList.length === 0) {
-      setNotFound(true)
-    } else {
-      setNotFound(false)
-    }
-      setInitialMovies(moviesList)
-      setFilteredMovies(
-        shortMovies ? filterShortMovies(moviesList) : moviesList
-      )
-      localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(moviesList))
+    setInitialMovies(moviesList)
+    setFilteredMovies(shortMovies ? filterShortMovies(moviesList) : moviesList)
+    localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(moviesList))
+    localStorage.setItem(`${currentUser.email} - allMovies`, JSON.stringify(movies))
   }
+
+  // function handleFilteredMovies(movies, userQuery, shortMovies) {
+  //   const moviesList = filterMovies(movies, userQuery, shortMovies)
+  //   if (moviesList.length === 0) {
+  //     setNotFound(true)
+  //   } else {
+  //     setNotFound(false)
+  //   }
+  //     setInitialMovies(moviesList)
+  //     setFilteredMovies(
+  //       shortMovies ? filterShortMovies(moviesList) : moviesList
+  //     )
+  //     localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(moviesList))
+  // }
 
   function handleShortMovies() {
       setShortMovies(!shortMovies)
@@ -41,32 +49,55 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
       localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMovies)
     }
 
-  function handleSearchedSubmit(inputValue) {
-    localStorage.setItem(`${currentUser.email} - moviesSearch`, inputValue)
-    localStorage.setItem(`${currentUser.email} - shortMovies`, shortMovies)
+    function handleSearchedSubmit(userQuery) {
+      localStorage.setItem(`${currentUser.email} - moviesSearch`, userQuery)
+      localStorage.setItem(`${currentUser.email} - shortMovies`, shortMovies)
 
-    if (allMoviesList.length === 0) {
-      setLoading(true)
-      moviesApi
+      if(localStorage.getItem(`${currentUser.email} - allMovies`)) {
+        const movies = JSON.parse(localStorage.getItem(`${currentUser.email} - allMovies`))
+        handleFilteredMovies(movies, userQuery, shortMovies)
+      } else {
+        setLoading(true)
+        moviesApi
         .getMovies()
         .then((movies) => {
-          setAllMoviesList(movies)
-          handleFilteredMovies(
-            adaptBackendMovies(movies),
-            inputValue,
-            shortMovies
-          )
+          handleFilteredMovies(movies, userQuery, shortMovies)
         })
         .catch((err) => {
           console.log(err)
         })
         .finally(() => {
           setLoading(false)
-        })
-    } else {
-      handleFilteredMovies(allMoviesList, inputValue, shortMovies)
+      })
+      }
     }
-  }
+
+  // function handleSearchedSubmit(inputValue) {
+  //   localStorage.setItem(`${currentUser.email} - moviesSearch`, inputValue)
+  //   localStorage.setItem(`${currentUser.email} - shortMovies`, shortMovies)
+
+  //   if (allMoviesList.length === 0) {
+  //     setLoading(true)
+  //     moviesApi
+  //       .getMovies()
+  //       .then((movies) => {
+  //         setAllMoviesList(movies)
+  //         handleFilteredMovies(
+  //           adaptBackendMovies(movies),
+  //           inputValue,
+  //           shortMovies
+  //         )
+  //       })
+  //       .catch((err) => {
+  //         console.log(err)
+  //       })
+  //       .finally(() => {
+  //         setLoading(false)
+  //       })
+  //   } else {
+  //     handleFilteredMovies(allMoviesList, inputValue, shortMovies)
+  //   }
+  // }
 
   useEffect(() => {
     if (localStorage.getItem(`${currentUser.email} - movies`)) {
