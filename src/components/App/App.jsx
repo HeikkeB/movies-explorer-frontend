@@ -101,7 +101,6 @@ function handleLogin({ email, password }) {
       setLoggedIn(true)
       history('/movies')
       toast.success('Добро пожаловать!')
-      firstEnter()
     })
     .catch((err) => {
       console.log(err)
@@ -127,12 +126,6 @@ function signOut() {
     })
 }
 
-function firstEnter() {
-  if(!localStorage.getItem(`${currentUser.email} - moviesSearch`)) {
-    console.log('enter to search')
-  }
-}
-
 function handleUpdateUser({ name, email }) {
   api
     .updateUser(name, email)
@@ -143,6 +136,7 @@ function handleUpdateUser({ name, email }) {
     .catch((err) => {
       console.log(err)
       toastInfoError(err)
+      handleUnauthorized(err)
     })
 }
 
@@ -153,6 +147,7 @@ function handleSaveMovie(movie) {
     .catch((err) => {
       console.log(err)
       toastInfoError(err)
+      handleUnauthorized(err)
     })
 }
 
@@ -174,8 +169,16 @@ function handleRemoveMovie(movie) {
     .catch((err) => {
       console.log(err)
       toastInfoError(err)
+      handleUnauthorized(err)
     })
 }
+
+function handleUnauthorized(err) {
+  if(err === 'Error: 401') {
+    signOut()
+    toastInfoError(err)
+  }
+} 
 
   return (
     <currentUserContext.Provider value={currentUser}>
@@ -239,7 +242,7 @@ function handleRemoveMovie(movie) {
             </ProtectedRoute>
           }
           />
-          <Route path='*' element={ loggedIn ? <Navigate to='/' /> : <NotFound /> } />
+          <Route path='*' element={<NotFound />} />
     </Routes>
 
     <ToastContainer

@@ -10,12 +10,47 @@ import { moviesApi } from '../../utils/MoviesApi'
 export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) {
   const [shortMovies, setShortMovies] = useState(false)
   const [initialMovies, setInitialMovies] = useState([])
-  const [allMoviesList, setAllMoviesList] = useState([])
   const [notFound, setNotFound] = useState(false)
   const [filteredMovies, setFilteredMovies] = useState([])
   const [loading, setLoading] = useState(false)
-
+  
   const currentUser = useContext(currentUserContext);
+
+  useEffect(() => {
+    if (localStorage.getItem(`${currentUser.email} - movies`)) {
+      const movies = JSON.parse(
+        localStorage.getItem(`${currentUser.email} - movies`)
+      );
+      setInitialMovies(movies);
+      if (
+        localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true'
+      ) {
+        setFilteredMovies(filterShortMovies(movies));
+      } else {
+        setFilteredMovies(movies);
+      }
+    }
+  }, [currentUser.email]);
+  
+  useEffect(() => {
+    if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
+      setShortMovies(true)     
+    } else {
+      setShortMovies(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    if(localStorage.getItem(`${currentUser.email} - moviesSearch`)) {
+      if(filteredMovies.length === 0) {
+        setNotFound(true)
+      } else {
+        setNotFound(false)
+      }
+    } else {
+      setNotFound(false)
+    }
+  }, [filteredMovies])
 
   function handleFilteredMovies(movies, userQuery, shortMovies) {
     const moviesList = filterMovies(movies, userQuery, shortMovies)
@@ -99,29 +134,6 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
   //   }
   // }
 
-  useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - movies`)) {
-      const movies = JSON.parse(
-        localStorage.getItem(`${currentUser.email} - movies`)
-      );
-      setInitialMovies(movies);
-      if (
-        localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true'
-      ) {
-        setFilteredMovies(filterShortMovies(movies));
-      } else {
-        setFilteredMovies(movies);
-      }
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
-      setShortMovies(true)     
-    } else {
-      setShortMovies(false)
-    }
-  }, [currentUser.email])
 
   return (
     <section className='movies'>
