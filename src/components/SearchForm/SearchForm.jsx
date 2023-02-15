@@ -1,44 +1,58 @@
-import { useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useLocation } from 'react-router-dom'
 import './SearchForm.css'
+import FilterCheckBox from '../FilterCheckBox/FilterCheckBox'
 import searchIcon from '../../images/searcher_icon.svg'
+import { currentUserContext } from '../../context/CurrentUserContext'
 
-export default function SearchForm() {
-    const [search, setSearch] = useState('')
+export default function SearchForm({ searchMovies, filteredShortMovies, shortMovies }) {
+
+    const currentUser = useContext(currentUserContext)
+    const location = useLocation()
+
+    useEffect(() => {
+        if (location.pathname === '/movies' && localStorage.getItem(`${currentUser.email} - moviesSearch`)) {
+            localStorage.getItem(`${currentUser.email} - moviesSearch`)
+        }
+    }, [currentUser.email, location.pathname])
+
     const {
         register,
+        watch,
         formState: {
             errors,
         },
         handleSubmit,
     } = useForm({
-        mode: 'onBlur',
+        mode: 'onChange',
     });
 
+    const search = watch('search',
+        location.pathname === '/movies' ? 
+            localStorage.getItem(`${currentUser.email} - moviesSearch`) : '')
+
     const handleSubmitSearch = () => {
-        setSearch('')
+        searchMovies(search)
     }
-
-
 
   return (
     <section className='search-form'>
         <div className='search-form__container'>
             <form className='search-form__searcher' onSubmit={handleSubmit(() => {
-                handleSubmitSearch();
+                handleSubmitSearch()
                 })}>
                 <input className='search-form__input'
                     placeholder='Фильм'
                     type='text'
                     {...register('search', {
-                        required: 'Напишите что-то в поиске',
+                        required: 'Нужно ввести ключевое слово',
                         maxLength: {
                             value: 40,
                             message: 'максимум 40 символов'
                         },
                     })}
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    value={search == null ? '' : search}
                 />
                 <div className='search-form__input-error'>{
                     errors?.search && <span className='search-form__input-error-text'>{errors?.search?.message || 'Что-то пошло не так...'}</span>
@@ -47,13 +61,7 @@ export default function SearchForm() {
                     <img className='search-form__button-img' src={searchIcon} alt='поиск'/>
                 </button>
             </form>
-            <div className='search-form__shortfilm'>
-                <p className='search-form__shortfilm-title'>Короткометражки</p>
-                <label class="search-form__switch" for="checkbox">
-                    <input className='search-form__switch-input' type="checkbox" id="checkbox" />
-                    <div class="search-form__slider search-form__round"></div>
-                </label>
-            </div>          
+            <FilterCheckBox shortMovies={shortMovies} filteredShortMovies={filteredShortMovies} />
         </div>
             <div className='search-form__bottom-line'></div>
     </section>

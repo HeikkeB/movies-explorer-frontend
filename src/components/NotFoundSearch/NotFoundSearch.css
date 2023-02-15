@@ -1,0 +1,46 @@
+.notFoundSearch__notFound-saved {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 654px);
+}
+
+.notFoundSearch__notFound-movies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 468px);
+}
+
+.notFoundSearch__notFound-text {
+    padding: 0;
+    margin: 30px 0 0;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2;
+    color: #8B8B8B;
+}
+
+@media screen and (max-width: 768px) {
+    .notFoundSearch__notFound-saved {
+        height: calc(100vh - 667px);
+    }
+
+    .notFoundSearch__notFound-movies {
+        height: calc(100vh - 481px);
+    }
+
+    .notFoundSearch__notFound-text {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 451px) {
+    .notFoundSearch__notFound-text {
+        font-size: 20px;
+    }
+
+    .notFoundSearch__notFound-movies {
+        height: calc(100vh - 549px);
+    }
+}

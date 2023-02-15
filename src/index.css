@@ -15,7 +15,7 @@ transition: #FFFFFF 5000s ease-in-out 0s;
 }
 
 .animation-link:hover {
-    opacity: .8;
+    opacity: .7;
     transform: translateY(-1px);
 }
 
@@ -39,6 +39,11 @@ transition: #FFFFFF 5000s ease-in-out 0s;
     letter-spacing: -0.04em;
     color: #FFFFFF;
     margin: 0 0 23px;
+}
+
+.Toastify__toast-theme--dark {
+    --toastify-color-dark : #272727 ;
+    --toastify-font-family : 'Inter', Arial, sans-serif ;
 }
 
 @import url(./vendor/normalize.css);

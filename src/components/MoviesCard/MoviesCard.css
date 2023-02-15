@@ -4,6 +4,7 @@
     border-radius: 6px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
     width: inherit;
+    max-height: 286px;
 }
 
 .movies-card__container {
@@ -24,12 +25,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    max-width: 100%;
 }
 
 .movies-card__info-text {
     display: inline-block;
     padding: 16px 0 16px 16px;
+    max-width: 100%;
 }
 
 .movies-card__title {
@@ -39,6 +41,10 @@
     color: #FFFFFF;
     margin: 0;
     padding: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 270px;
 }
 
 .movies-card__duration {
@@ -53,26 +59,28 @@
 }
 
 .movies-card__like {
+    align-self: flex-start;
     cursor: pointer;
     padding: 0;
-    margin: 0 24px 20px 0;
+    margin: 16px 24px 0 0;
     border: none;
     background-image: url(../../images/heart_unpushed.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
-    width: 14px;
-    height: 12px;
+    min-width: 14px;
+    min-height: 12px;
 }
 
-.movies-card__btn {
-
+.movies-card__link-img {
+    max-height: 203px;
 }
 
 .movies-card__like_active {
+    align-self: flex-start;
     cursor: pointer;
     padding: 0;
-    margin: 0 24px 20px 0;
+    margin: 16px 24px 0 0;
     border: none;
     background-image: url(../../images/heart_pushed.svg);
     background-repeat: no-repeat;
