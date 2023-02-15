@@ -2,7 +2,7 @@ function filterShortMovies(movies) {
     return movies.filter(movie => movie.duration < 40)
   }
 
-function filterMovies(movies, userQuery, shortMovies) {
+function filterMovies(movies, userQuery) {
     const moviesByUserQuery = movies.filter((movie) => {
       const movieNameRu = String(movie.nameRU).toLowerCase().trim()
       const movieNameEn = String(movie.nameEN).toLowerCase().trim()
@@ -10,11 +10,11 @@ function filterMovies(movies, userQuery, shortMovies) {
       return movieNameRu.indexOf(userMovie) !== -1 || movieNameEn.indexOf(userMovie) !== -1
     })
 
-    if(shortMovies) {
-      return filterShortMovies(moviesByUserQuery)
-    } else {
+//     if(shortMovies) {
+//       return filterShortMovies(moviesByUserQuery)
+//     } else {
       return moviesByUserQuery
-    }
+//     }
 }
 
 function adaptBackendMovies(movies) {

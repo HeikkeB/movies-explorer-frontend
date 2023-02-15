@@ -143,7 +143,10 @@ function handleUpdateUser({ name, email }) {
 function handleSaveMovie(movie) {
   api
     .createMovies(movie)
-    .then(newMovie => setSavedMoviesList([newMovie, ...savedMoviesList]))
+    .then((newMovie) => {
+      setSavedMoviesList([newMovie, ...savedMoviesList])
+      toast.success('Фильм добавлен в сохранённые')
+    })
     .catch((err) => {
       console.log(err)
       toastInfoError(err)
@@ -155,16 +158,20 @@ function handleRemoveMovie(movie) {
   const savedMovie = savedMoviesList.find((item) => item.movieId === movie.id || item.movieId === movie.movieId)
   api
     .removeMovie(savedMovie._id)
+    // .then(() => {
+    //   const newMovieList = savedMoviesList.filter(m => {
+    //     if(movie.id === m.movieId || movie.movieId === m.movieId) {
+    //       return false
+    //     } else {
+    //       return true
+    //     }
+    //   })
+    //   setSavedMoviesList(newMovieList)
+    //   toast.success('Фильм удален из ваших сохранений')
+    // })
     .then(() => {
-      const newMovieList = savedMoviesList.filter(m => {
-        if(movie.id === m.movieId || movie.movieId === m.movieId) {
-          return false
-        } else {
-          return true
-        }
-      })
-      setSavedMoviesList(newMovieList)
-      toast.success('Фильм удален из ваших сохранений')
+      setSavedMoviesList((state) => state.filter((item) => item._id !== savedMovie._id))
+      toast.success('Фильм удален из сохранённых')
     })
     .catch((err) => {
       console.log(err)

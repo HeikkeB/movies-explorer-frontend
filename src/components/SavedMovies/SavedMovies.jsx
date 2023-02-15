@@ -11,8 +11,9 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
 
   const currentUser = useContext(currentUserContext);
   const [shortMovies, setShortMovies] = useState(false)
-  const [showMovies, setShowMovies] = useState(savedMoviesList)
-  const [filterSearchMovies, setFilterSearchMovies] = useState(showMovies)
+  // const [showMovies, setShowMovies] = useState(savedMoviesList)
+  const [filterSearchMovies, setFilterSearchMovies] = useState(savedMoviesList)
+  const [searchQuery, setSearchQuery] = useState('')
   const [notFound, setNotFound] = useState(false)
   
   const history = useNavigate()
@@ -25,42 +26,63 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
   }, [currentUser.email, history])
 
   useEffect(() => {
-    setFilterSearchMovies(savedMoviesList)
-    savedMoviesList.length !== 0 ? setNotFound(false) : setNotFound(true)
-  }, [savedMoviesList])
+    const moviesList = filterMovies(savedMoviesList, searchQuery)
+    setFilterSearchMovies(shortMovies ? filterShortMovies(moviesList) : moviesList)
+  }, [savedMoviesList, searchQuery, shortMovies])
 
   useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === 'true') {
-      setShortMovies(true)
-      setShowMovies(filterShortMovies(savedMoviesList))
-    } else {
-      setShortMovies(false)
-      setShowMovies(savedMoviesList)
-    }
-  }, [currentUser, savedMoviesList])
-
-  function handleSearchSubmit(inputValue) {
-    const moviesList = filterMovies(savedMoviesList, inputValue, shortMovies)
-    if(moviesList.length === 0) {
+    if(filterSearchMovies.length === 0) {
       setNotFound(true)
     } else {
       setNotFound(false)
-      setFilterSearchMovies(moviesList)
-      setShowMovies(moviesList)
     }
+  }, [filterSearchMovies])
+
+  // useEffect(() => {
+  //   setFilterSearchMovies(savedMoviesList)
+  //   savedMoviesList.length === 0 ? setNotFound(true) : setNotFound(false)
+  // }, [savedMoviesList])
+
+  // useEffect(() => {
+  //   if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === 'true') {
+  //     setShortMovies(true)
+  //     setShowMovies(filterShortMovies(savedMoviesList))
+  //   } else {
+  //     setShortMovies(false)
+  //     setShowMovies(savedMoviesList)
+  //   }
+  // }, [currentUser, savedMoviesList])
+
+  // function handleSearchSubmit(inputValue) {
+  //   const moviesList = filterMovies(savedMoviesList, inputValue, shortMovies)
+  //   if(moviesList.length === 0) {
+  //     setNotFound(true)
+  //   } else {
+  //     setNotFound(false)
+  //     setFilterSearchMovies(moviesList)
+  //     setShowMovies(moviesList)
+  //   }
+  // }
+
+  function handleSearchSubmit(inputValue) {
+    setSearchQuery(inputValue)
   }
 
   function handleShortMovies() {
-    if(!shortMovies) {
-      setShortMovies(true)
-      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, true)
-      setShowMovies(filterShortMovies(filterSearchMovies))
-    } else {
-      setShortMovies(false)
-      localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false)
-      setShowMovies(filterSearchMovies)
-    }
+    setShortMovies(!shortMovies)
   }
+
+  // function handleShortMovies() {
+  //   if(!shortMovies) {
+  //     setShortMovies(true)
+  //     localStorage.setItem(`${currentUser.email} - shortSavedMovies`, true)
+  //     setShowMovies(filterShortMovies(filterSearchMovies))
+  //   } else {
+  //     setShortMovies(false)
+  //     localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false)
+  //     setShowMovies(filterSearchMovies)
+  //   }
+  // }
 
   return (
     <section className='saved-movies'>
@@ -73,7 +95,7 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
          <NotFoundSearch />
          : 
         <MoviesCardList
-          moviesList={showMovies}
+          moviesList={filterSearchMovies}
           savedMoviesList={savedMoviesList}
           removeLikeClick={removeLikeClick}
         />

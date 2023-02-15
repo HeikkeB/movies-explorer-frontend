@@ -29,8 +29,10 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
       } else {
         setFilteredMovies(movies);
       }
+    } else {
+      setNotFound(true)
     }
-  }, [currentUser.email]);
+  }, []);
   
   useEffect(() => {
     if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
@@ -74,15 +76,29 @@ export default function Movies({ likeClick, savedMoviesList, removeLikeClick }) 
   //     localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(moviesList))
   // }
 
+  // function handleShortMovies() {
+  //     setShortMovies(!shortMovies)
+  //     if(!shortMovies) {  
+  //       setFilteredMovies(filterShortMovies(initialMovies))      
+  //     } else {
+  //       setFilteredMovies(initialMovies)
+  //     }
+  //     localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMovies)
+  //   }
+
   function handleShortMovies() {
-      setShortMovies(!shortMovies)
-      if(!shortMovies) {    
-        setFilteredMovies(filterShortMovies(initialMovies))      
+    setShortMovies(!shortMovies)
+    if(!shortMovies) {
+      if(filterShortMovies(initialMovies).length === 0) {
+        setFilteredMovies(filterShortMovies(initialMovies))
       } else {
-        setFilteredMovies(initialMovies)
+        setFilteredMovies(filterShortMovies(initialMovies))
       }
-      localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMovies)
+    } else {
+      setFilteredMovies(initialMovies)
     }
+    localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMovies)
+  }
 
     function handleSearchedSubmit(userQuery) {
       localStorage.setItem(`${currentUser.email} - moviesSearch`, userQuery)
