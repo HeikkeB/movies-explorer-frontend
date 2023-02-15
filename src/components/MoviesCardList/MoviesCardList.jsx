@@ -3,10 +3,11 @@ import { useLocation } from 'react-router-dom'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import Preloader from '../Preloader/Preloader'
 import './MoviesCardList.css'
+import { SHOWDISPLAY, DESKTOP, MOBILE } from '../../utils/constants'
 
 export default function MoviesCardList({ savedMoviesList, moviesList, likeClick, removeLikeClick, loading }) {
   const [ showMoviesList, setShowMoviesList ] = useState([])
-  const [showDetails, setShowDetails] = useState({ total: 12, more: 3 })
+  const [showDetails, setShowDetails] = useState(SHOWDISPLAY.large)
 
   const location = useLocation()
 
@@ -39,14 +40,14 @@ export default function MoviesCardList({ savedMoviesList, moviesList, likeClick,
   function showDetailsList() {
     const display = window.innerWidth
     if(location.pathname === '/movies') {
-      if(display > 996) {
-        setShowDetails({total: 12, more: 3})
+      if(display > DESKTOP) {
+        setShowDetails(SHOWDISPLAY.large)
       } 
-      if (display < 996) {
-        setShowDetails({total: 8, more: 2})
+      if (display < DESKTOP) {
+        setShowDetails(SHOWDISPLAY.medium)
       }
-      if (display < 629) {
-        setShowDetails({total: 5, more: 2})
+      if (display < MOBILE) {
+        setShowDetails(SHOWDISPLAY.small)
       }
     }
   }

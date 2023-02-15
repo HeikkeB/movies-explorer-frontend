@@ -192,19 +192,25 @@ function handleUnauthorized(err) {
     <currentUserContext.Provider value={currentUser}>
     <div className="App">
     <Routes>
-        <Route
+          <Route
           path='/signup'
-          element={ <Register
-           handleRegister={handleRegister}
+          element={loggedIn ? (
+            <Navigate to='/' />
+              ) : (        
+            <Register
+              handleRegister={handleRegister}
             />
-          }
-        />
+          )}         
+          />
         <Route
           path='/signin'
-          element={ <Login
+          element={loggedIn ? (
+            <Navigate to='/' />
+          ) : (
+            <Login
             handleLogin={handleLogin}
             />
-          }
+          )}
         />
         <Route
           exact='true'

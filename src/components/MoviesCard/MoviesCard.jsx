@@ -1,19 +1,10 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import './MoviesCard.css'
+import { changeDuration } from '../../utils/utils'
 
 export default function MoviesCard({savedMovies, likeClick, removeLikeClick, movie }) {
   const location = useLocation()
-
-  function changeDuration(duration) {
-    const hours = Math.trunc(duration / 60);
-    const minutes = duration % 60;
-    if(hours === 0) {
-      return `${minutes}м`;
-    } else {
-      return `${hours}ч ${minutes}м`;
-    }
-  }
 
   function handleLikeClick() {
     likeClick(movie)
