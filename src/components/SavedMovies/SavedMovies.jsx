@@ -11,7 +11,6 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
 
   const currentUser = useContext(currentUserContext);
   const [shortMovies, setShortMovies] = useState(false)
-  // const [showMovies, setShowMovies] = useState(savedMoviesList)
   const [filterSearchMovies, setFilterSearchMovies] = useState(savedMoviesList)
   const [searchQuery, setSearchQuery] = useState('')
   const [notFound, setNotFound] = useState(false)
@@ -38,32 +37,6 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
     }
   }, [filterSearchMovies])
 
-  // useEffect(() => {
-  //   setFilterSearchMovies(savedMoviesList)
-  //   savedMoviesList.length === 0 ? setNotFound(true) : setNotFound(false)
-  // }, [savedMoviesList])
-
-  // useEffect(() => {
-  //   if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === 'true') {
-  //     setShortMovies(true)
-  //     setShowMovies(filterShortMovies(savedMoviesList))
-  //   } else {
-  //     setShortMovies(false)
-  //     setShowMovies(savedMoviesList)
-  //   }
-  // }, [currentUser, savedMoviesList])
-
-  // function handleSearchSubmit(inputValue) {
-  //   const moviesList = filterMovies(savedMoviesList, inputValue, shortMovies)
-  //   if(moviesList.length === 0) {
-  //     setNotFound(true)
-  //   } else {
-  //     setNotFound(false)
-  //     setFilterSearchMovies(moviesList)
-  //     setShowMovies(moviesList)
-  //   }
-  // }
-
   function handleSearchSubmit(inputValue) {
     setSearchQuery(inputValue)
   }
@@ -71,18 +44,6 @@ export default function SavedMovies({ savedMoviesList, removeLikeClick }) {
   function handleShortMovies() {
     setShortMovies(!shortMovies)
   }
-
-  // function handleShortMovies() {
-  //   if(!shortMovies) {
-  //     setShortMovies(true)
-  //     localStorage.setItem(`${currentUser.email} - shortSavedMovies`, true)
-  //     setShowMovies(filterShortMovies(filterSearchMovies))
-  //   } else {
-  //     setShortMovies(false)
-  //     localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false)
-  //     setShowMovies(filterSearchMovies)
-  //   }
-  // }
 
   return (
     <section className='saved-movies'>

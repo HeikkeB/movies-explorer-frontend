@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify'
+
 function filterShortMovies(movies) {
     return movies.filter(movie => movie.duration < 40)
   }
@@ -34,4 +36,16 @@ function changeDuration(duration) {
   }
 }
 
-export { filterShortMovies, filterMovies, adaptBackendMovies, changeDuration }
+function toastInfoError(message) {
+  if(message === 'Error: 409') {
+   toast.error('Пользователь с таким E-mail уже есть')
+  } else if (message === 'Error: 400' || message === 'Error: 500'){
+    toast.error('Что-то пошло не так')
+  } else if (message === 'Error: 401') {
+    toast.error('Неправильный логин или пароль')
+  } else if (message === 'Error: 429') {
+    toast.warn('Слишком много запросов к серверу')
+  }
+}
+
+export { filterShortMovies, filterMovies, adaptBackendMovies, changeDuration, toastInfoError }

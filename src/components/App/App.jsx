@@ -15,6 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Movies from '../Movies/Movies'
 import SavedMovies from '../SavedMovies/SavedMovies'
 import Profile from '../Profile/Profile'
+import { toastInfoError } from '../../utils/utils'
 
 function App() {
 const [loggedIn, setLoggedIn] = useState(false);
@@ -64,18 +65,6 @@ useEffect(() => {
       })
   }
 }, [currentUser, loggedIn])
-
-function toastInfoError(message) {
-  if(message === 'Error: 409') {
-   toast.error('Пользователь с таким E-mail уже есть')
-  } else if (message === 'Error: 400' || message === 'Error: 500'){
-    toast.error('Что-то пошло не так')
-  } else if (message === 'Error: 401') {
-    toast.error('Неправильный логин или пароль')
-  } else if (message === 'Error: 429') {
-    toast.warn('Слишком много запросов к серверу')
-  }
-}
 
 function handleRegister({ name, email, password }) {
   api
@@ -159,17 +148,6 @@ function handleRemoveMovie(movie) {
   const savedMovie = savedMoviesList.find((item) => item.movieId === movie.id || item.movieId === movie.movieId)
   api
     .removeMovie(savedMovie._id)
-    // .then(() => {
-    //   const newMovieList = savedMoviesList.filter(m => {
-    //     if(movie.id === m.movieId || movie.movieId === m.movieId) {
-    //       return false
-    //     } else {
-    //       return true
-    //     }
-    //   })
-    //   setSavedMoviesList(newMovieList)
-    //   toast.success('Фильм удален из ваших сохранений')
-    // })
     .then(() => {
       setSavedMoviesList((state) => state.filter((item) => item._id !== savedMovie._id))
       toast.success('Фильм удален из сохранённых')
