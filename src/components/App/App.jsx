@@ -118,6 +118,7 @@ function signOut() {
       localStorage.removeItem(`${currentUser.email} - shortMovies`)
       localStorage.removeItem(`${currentUser.email} - moviesSearch`)
       localStorage.removeItem(`${currentUser.email} - shortSavedMovies`)
+      localStorage.removeItem(`${currentUser.email} - allMovies`)
       toast.success('До скорой встречи!')
     })
     .catch((err) => {
