@@ -1,4 +1,4 @@
-# movies-explorer-frontend
+# Сайт по поиску фильмов жанра "арт-хаус"
 
 ## [макет Figma](https://disk.yandex.ru/d/dSSnXljFdDOPvQ)
 
