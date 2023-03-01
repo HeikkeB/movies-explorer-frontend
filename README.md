@@ -6,7 +6,7 @@
   
 * склонировать репозиторий - git clone https://github.com/HeikkeB/movies-explorer-frontend
 * склонировать репозиторий - git clone https://github.com/HeikkeB/movies-explorer-api
-* зайти в любой терминал( предпочтительнее будет VS Code/WebStorm)
+* зайти в любой терминал (предпочтительнее будет терминал в VS Code/WebStorm)
 * в папке `movies-explorer-api`
   - в терминале `npm i`
   - в терминале `npm i -D`
