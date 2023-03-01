@@ -1,35 +1,34 @@
-# Приложение по поиску фильмов жанра "арт-хаус"
+# Art house movie search app.
 
-Если вам нравится "арт-хаус", то это приложение для вас! В нём вы сможете найти как полный метр, так и короткометражные фильмы, а также если вы создадите себе аккаунт, появится возможность сохранять понравившиеся фильмы к себе в избранное. Чтобы сразу понимать с чем вы имеете дело, можно нажать на баннер фильма и посмотреть трейлер на YouTube.
+If you like "art house" then this app is for you! In it you can find both feature films and short films, and if you create an account for yourself, you will be able to save your favorite films to your favorites. To immediately understand what you are dealing with, you can click on the movie banner and watch the trailer on YouTube.
 
-## Как развернуть приложение у себя:
+## The start of App
   
-* склонировать репозиторий - git clone https://github.com/HeikkeB/movies-explorer-frontend
-* склонировать репозиторий - git clone https://github.com/HeikkeB/movies-explorer-api
-* зайти в любой терминал (предпочтительнее будет терминал в VS Code/WebStorm)
-* в папке `movies-explorer-api`
-  - в терминале `npm i`
-  - в терминале `npm i -D`
-  - в терминале `npm run dev` для разработки
-  - в терминале `npm start` для релиза
-  - в терминале `npm run lint` для тестирования кода
+* git clone https://github.com/HeikkeB/movies-explorer-frontend
+* git clone https://github.com/HeikkeB/movies-explorer-api
+* in the folder `movies-explorer-api`
+  - enter in Terminal `npm i`
+  - enter in Terminal `npm i -D`
+  - enter in Terminal `npm run dev` for development
+  - enter in Terminal `npm start` for production
+  - enter in Terminal `npm run lint` for testing
  
-* в папке `movies-explorer-frontend`
-  - в терминале `npm i`
-  - в терминале `npm start` для разработки
-  - в терминале `npm build` для релиза
-  - в терминале `npm run test` для тестирования кода
+* in the folder `movies-explorer-frontend`
+  - enter in Terminal `npm i`
+  - enter in Terminal `npm start` for development
+  - enter in Terminal `npm build` for production
+  - enter in Terminal `npm run test` for testing
 
-## Использованные технологии в проекте:
+## Used technologies
 
 ![https://img.shields.io/badge/-Mongo%20DB-brightgreen](https://img.shields.io/badge/-Mongo%20DB-brightgreen)
 ![https://img.shields.io/badge/-Express-important](https://img.shields.io/badge/-Express-important)
 ![https://img.shields.io/badge/-React%20JS-blue](https://img.shields.io/badge/-React%20JS-blue)
 ![https://img.shields.io/badge/-Node%20JS-success](https://img.shields.io/badge/-Node%20JS-success)
 
-## Планы по доработке: 
+## Project improvement plans 
 
-- доработка регистрации (больше информации о себе, добавление аватара)
-- переподключение к API с более расширенной базой фильмов
-- изменение начальной страницы
-- доработка дизайна (логотип, изменение цветовой схемы) 
+- completion of registration (more information about youself, add an avatar)
+- reconnecting to the API with a more extended database of movies
+- change main page
+- change design (logo, change of color scheme) 
